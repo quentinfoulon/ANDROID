@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:collapseColumns="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Fiche Peda"
+                android:id="@+id/peda"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:drawableTint="@android:color/darker_gray" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="FUN"
+                android:id="@+id/fun"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_light"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="EDUCOMEDIA"
+                android:id="@+id/media"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="EDUCO-CODE"
+                android:id="@+id/code"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_light"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
+    </TableLayout>
+</FrameLayout>
