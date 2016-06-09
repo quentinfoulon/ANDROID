@@ -1,24 +1,14 @@
 package ldp.ldp;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-
-import java.util.ArrayList;
-
-import static ldp.ldp.R.layout.page2;
-
-import static ldp.ldp.R.layout.activity_main;
 
 /**
  * Created by quentin on 02/06/2016.
@@ -69,7 +59,7 @@ public class page2 extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(page2.this, numerique.class);
+            Intent intent = new Intent(page2.this, DeroulanteList.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
             intent.putExtra("theme","numerique");
             startActivity(intent);
@@ -84,7 +74,7 @@ public class page2 extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(page2.this, numerique.class);
+            Intent intent = new Intent(page2.this, DeroulanteList.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
             intent.putExtra("theme","svt");
             startActivity(intent);
@@ -99,7 +89,7 @@ public class page2 extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(page2.this, numerique.class);
+            Intent intent = new Intent(page2.this, DeroulanteList.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
             intent.putExtra("theme","transition");
             startActivity(intent);
@@ -114,7 +104,7 @@ public class page2 extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(page2.this, numerique.class);
+            Intent intent = new Intent(page2.this, DeroulanteList.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
             intent.putExtra("theme","etrehumain");
             startActivity(intent);

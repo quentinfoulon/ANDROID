@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         code = (Button) findViewById(R.id.code);
         fun = (Button) findViewById(R.id.fun);
         peda.setOnClickListener(pedaListener);
+        code.setOnClickListener(codeListener);
         //peda.setOnTouchListener(pedaTListener);
 
 
@@ -68,23 +71,27 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener pedaListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
-
-
             //setContentView(page2);
             Intent intent = new Intent(MainActivity.this, page2.class);
-
-
-
-                al2=new ArrayList(db.al);
-
-
-            System.out.println("test: "+al2.get(0));
+            al2=new ArrayList(db.al);
+            try {
+                System.out.println("test: " + al2.get(0));
+            }catch (Exception e){
+                Toast.makeText(getApplicationContext(),
+                        " Probleme de connection a la Base de données.",
+                        Toast.LENGTH_SHORT).show();
+            }
             intent.putStringArrayListExtra("value", al2);
             startActivity(intent);
-
-
+        }
+    };
+    private View.OnClickListener codeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //setContentView(page2);
+            Intent intent2 = new Intent(MainActivity.this, DeroulanteList.class);
+            intent2.putStringArrayListExtra("value", al2);
+            startActivity(intent2);
         }
     };
 

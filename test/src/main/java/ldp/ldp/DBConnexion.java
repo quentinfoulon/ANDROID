@@ -1,6 +1,8 @@
 package ldp.ldp;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -45,6 +47,7 @@ public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
                 System.out.println("connexion O.K.");
             }
             catch(SQLException i){
+
                 System.out.println("connexion k.o.");
                 i.printStackTrace();
             }
