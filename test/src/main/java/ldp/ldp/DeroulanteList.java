@@ -34,75 +34,109 @@ public class DeroulanteList extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deroulantelist);
-        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         Intent intent = getIntent();
-        toolbar.setTitle("Fiche Peda : "+intent.getStringExtra("theme"));
-        //definir notre toolbar en tant qu'actionBar
-        setSupportActionBar(toolbar);
-        //afficher le bouton retour
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        if(intent.getStringExtra("theme").equals("code")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("atelier : educo-code");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }else if(intent.getStringExtra("theme").equals("media")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("atelier : educoMedia");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }
+        else {
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+
+            toolbar.setTitle("Fiche Peda : " + intent.getStringExtra("theme"));
+            //definir notre toolbar en tant qu'actionBar
+            setSupportActionBar(toolbar);
+            //afficher le bouton retour
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
 
 
-        ArrayList<String> al2= new ArrayList(intent.getStringArrayListExtra("value"));
-        ArrayList<String> alTitre=new ArrayList<String>();
-        String test[] = {"test","test2"};
-        String tabResume[][]=new String[al2.size()][4];
+            ArrayList<String> al2 = new ArrayList(intent.getStringArrayListExtra("value"));
+            ArrayList<String> alTitre = new ArrayList<String>();
+            String test[] = {"test", "test2"};
+            String tabResume[][] = new String[al2.size()][4];
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListDetail = ExpandableListDataPump.getData(al2,intent.getStringExtra("theme"));
-        listlien= ExpandableListDataPump.getlien();
-        System.out.println("" + intent.getStringExtra("theme") + "");
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
-        expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+            expandableListDetail = ExpandableListDataPump.getData(al2, intent.getStringExtra("theme"));
+            listlien = ExpandableListDataPump.getlien();
+            System.out.println("" + intent.getStringExtra("theme") + "");
+            expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+            expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+            expandableListView.setAdapter(expandableListAdapter);
+            expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " Liste étendue .",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    Toast.makeText(getApplicationContext(),
+                            expandableListTitle.get(groupPosition) + " Liste étendue .",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
 
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " Liste réduite.",
-                        Toast.LENGTH_SHORT).show();
+                @Override
+                public void onGroupCollapse(int groupPosition) {
+                    Toast.makeText(getApplicationContext(),
+                            expandableListTitle.get(groupPosition) + " Liste réduite.",
+                            Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
 
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-               //listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)), Toast.LENGTH_SHORT
-                ).show();
-                Intent intent2 = new Intent(DeroulanteList.this, InternetPage.class);
-                intent2.putExtra("url",listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)));
-                intent2.putExtra("nom",expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
-                startActivity(intent2);
-                return false;
-            }
-        });
-        //action du retour a la page .
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+            expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v,
+                                            int groupPosition, int childPosition, long id) {
+                    //listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                    Toast.makeText(
+                            getApplicationContext(),
+                            expandableListTitle.get(groupPosition)
+                                    + " -> "
+                                    + listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)), Toast.LENGTH_SHORT
+                    ).show();
+                    Intent intent2 = new Intent(DeroulanteList.this, InternetPage.class);
+                    intent2.putExtra("url", listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)));
+                    intent2.putExtra("nom", expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                    startActivity(intent2);
+                    return false;
+                }
+            });
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }
     }
 
 
