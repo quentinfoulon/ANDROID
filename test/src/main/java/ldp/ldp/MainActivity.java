@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //setContentView(page2);
-            Intent intent2 = new Intent(MainActivity.this, Change.class);
+            Intent intent2 = new Intent(MainActivity.this, Listecode.class);
             intent2.putExtra("theme","code");
             intent2.putStringArrayListExtra("value", al2);
             startActivity(intent2);
