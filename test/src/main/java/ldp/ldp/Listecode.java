@@ -45,6 +45,7 @@ public class Listecode extends AppCompatActivity {
         //------------------modifiacation de la list des activité --------------------------
         final ArrayList<String> list = new ArrayList<String>();
         list.add("convertiseur");
+        list.add("code cesar");
         final ListView listview = (ListView) findViewById(R.id.listView);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, list);
@@ -61,9 +62,13 @@ public class Listecode extends AppCompatActivity {
                     Intent intent2 = new Intent(Listecode.this, Change.class);
                     intent2.putExtra("theme", "code");
                     startActivity(intent2);
-                }else{
-
+                }else  if(item.equals("code cesar")) {
+                    Intent intent2 = new Intent(Listecode.this, CryptageCesar.class);
+                    intent2.putExtra("theme", "code");
+                    startActivity(intent2);
                 }
+
+
 
             }
         });
