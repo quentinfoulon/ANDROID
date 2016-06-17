@@ -82,12 +82,8 @@ public class CryptageVigenere extends AppCompatActivity {
                                          boolean isChecked) {
 
                 if(isChecked){
-                    //System.out.println("on");
-                    //texteConvertie();
-                    edittext2.setText(crypt.Code(String.valueOf(edittext1.getText()),String.valueOf(edittext3.getText())));
-
+                    decode();
                 }else{
-                    //System.out.println("off");
 
                 }
             }
