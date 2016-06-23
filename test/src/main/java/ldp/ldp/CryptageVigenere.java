@@ -1,6 +1,5 @@
 package ldp.ldp;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,18 +23,20 @@ public class CryptageVigenere extends AppCompatActivity {
     private String texte;
     private Switch switch1;
     CodDec_Vigenere crypt;
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cryptagevigenere);
         Intent intent = getIntent();
         //ajout des toolbar avec leur bouton d'utilisation
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setTitle("atelier : code de cesar");
+        toolbar.setTitle("atelier : code de Vigenere");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        }
         //action du retour a la page .
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

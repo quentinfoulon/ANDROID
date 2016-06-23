@@ -1,6 +1,5 @@
 package ldp.ldp;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -42,7 +41,7 @@ public class Change extends AppCompatActivity implements AdapterView.OnItemSelec
      */
     private GoogleApiClient client;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change);
@@ -111,7 +110,9 @@ public class Change extends AppCompatActivity implements AdapterView.OnItemSelec
             setSupportActionBar(toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
             //action du retour a la page .
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override

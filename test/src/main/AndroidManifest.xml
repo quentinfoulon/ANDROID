@@ -53,6 +53,14 @@
         </activity>
         <activity android:name=".CryptageVigenere"
 
+        >
+         </activity>
+        <activity android:name=".QuizInfo"
+
+        >
+        </activity>
+        <activity android:name=".QuizLogo"
+
             >
         </activity>
 

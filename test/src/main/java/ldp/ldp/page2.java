@@ -1,6 +1,5 @@
 package ldp.ldp;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,7 +19,7 @@ public class page2 extends AppCompatActivity {
     private Button svt ;
     private Button trans ;
     private Toolbar toolbar ;
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+   // @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,9 @@ public class page2 extends AppCompatActivity {
         //afficher le bouton retour
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        }
 
         //action du retour a la page .
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

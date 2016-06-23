@@ -1,6 +1,5 @@
 package ldp.ldp;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -25,7 +24,7 @@ public class CryptageCesar extends AppCompatActivity {
     private Switch switch1;
     private static final int TAILLE_ALPHABET = 26;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cryptage_cesar);
@@ -36,7 +35,9 @@ public class CryptageCesar extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        }
         //action du retour a la page .
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

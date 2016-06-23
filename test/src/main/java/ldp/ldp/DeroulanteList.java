@@ -1,6 +1,5 @@
 package ldp.ldp;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -29,7 +28,7 @@ public class DeroulanteList extends AppCompatActivity {
     HashMap<String, List<String>> expandableListDetail;
     HashMap<String, String> listlien;
     WebView webview;
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,9 @@ public class DeroulanteList extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
             //action du retour a la page .
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,7 +58,9 @@ public class DeroulanteList extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
             //action du retour a la page .
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,7 +78,9 @@ public class DeroulanteList extends AppCompatActivity {
             //afficher le bouton retour
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
 
 
             ArrayList<String> al2 = new ArrayList(intent.getStringArrayListExtra("value"));
