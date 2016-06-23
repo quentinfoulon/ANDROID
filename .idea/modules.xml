@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ldp2.iml" filepath="$PROJECT_DIR$/ldp2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/postgresql-9.4.1208.jre6/postgresql-9.4.1208.jre6.iml" filepath="$PROJECT_DIR$/postgresql-9.4.1208.jre6/postgresql-9.4.1208.jre6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
+    </modules>
+  </component>
+</project>
