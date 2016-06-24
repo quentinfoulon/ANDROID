@@ -96,15 +96,6 @@ public class QuizLogo extends AppCompatActivity {
         listeImage2.add(R.drawable.carrefour);listeImage.add("carrefour");
         listeImage2.add(R.drawable.volkswagen);listeImage.add("volkswagen");
 
-        listeImage2.add(R.drawable.kfc);listeImage.add("kfc");
-        listeImage2.add(R.drawable.levis);listeImage.add("levis");
-        listeImage2.add(R.drawable.mcdo);listeImage.add("mc do");
-        listeImage2.add(R.drawable.nike);listeImage.add("nike");
-        listeImage2.add(R.drawable.nutella);listeImage.add("nutella");
-        listeImage2.add(R.drawable.pepsi);listeImage.add("pepsi");
-        listeImage2.add(R.drawable.playstation);listeImage.add("playstation");
-        listeImage2.add(R.drawable.prince);listeImage.add("prince");
-
         listeImage2.add(R.drawable.xbox);listeImage.add("xbox");
         listeImage2.add(R.drawable.youtube);listeImage.add("youtube");
         listeImage2.add(R.drawable.ysl);listeImage.add("yves saint laurent");

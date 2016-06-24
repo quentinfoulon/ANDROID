@@ -1,6 +1,9 @@
 package ldp.ldp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +37,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
-         db = new DBConnexion(); db.execute();
+        if (isOnline())
+        {
+            // Faire quelque chose si le périphérique est connecté
+            db = new DBConnexion(); db.execute();
+        }
+        else
+        {
+            // Faire quelque chose s'il n'est pas connecté
+        }
+
 
 
         peda = (Button) findViewById(R.id.peda);
@@ -56,17 +68,23 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //setContentView(page2);
-            Intent intent = new Intent(MainActivity.this, page2.class);
-            al2=new ArrayList(db.al);
-            try {
-                System.out.println("test: " + al2.get(0));
-            }catch (Exception e){
+            if (isOnline()) {
+                Intent intent = new Intent(MainActivity.this, page2.class);
+                al2 = new ArrayList(db.al);
+                try {
+                    System.out.println("test: " + al2.get(0));
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),
+                            " Probleme de connection a la Base de données.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                intent.putStringArrayListExtra("value", al2);
+                startActivity(intent);
+            }else{
                 Toast.makeText(getApplicationContext(),
-                        " Probleme de connection a la Base de données.",
+                        " Pas de connexion a internet",
                         Toast.LENGTH_SHORT).show();
             }
-            intent.putStringArrayListExtra("value", al2);
-            startActivity(intent);
         }
     };
     private View.OnClickListener codeListener = new View.OnClickListener() {
@@ -89,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent2);
         }
     };
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
 
 
 
