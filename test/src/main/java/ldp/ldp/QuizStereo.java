@@ -45,7 +45,7 @@ public class QuizStereo extends AppCompatActivity {
         Intent intent = getIntent();
         //ajout des toolbar avec leur bouton d'utilisation
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setTitle("atelier : quiz des stéréotype");
+        toolbar.setTitle("atelier : quiz des stéréotypes");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -101,7 +101,7 @@ public class QuizStereo extends AppCompatActivity {
             if(compteur<10){
                 Toast.makeText(
                         getApplicationContext(),
-                        "reponse correct : "+listeImage.get(nombre), Toast.LENGTH_SHORT
+                        "Réponse correcte : "+listeImage.get(nombre), Toast.LENGTH_SHORT
                 ).show();
                 if(listeImage.get(nombre).equals(listeQ1.get(nombre))){
                     if(radioButton1.isChecked()) {
@@ -141,7 +141,7 @@ public class QuizStereo extends AppCompatActivity {
                             getApplicationContext(),
                             "Resultat " + resultat + "/10", Toast.LENGTH_SHORT
                     ).show();
-                    button.setText("afficher le resultat");
+                    button.setText("Afficher le Resultat");
                 }
 
             }

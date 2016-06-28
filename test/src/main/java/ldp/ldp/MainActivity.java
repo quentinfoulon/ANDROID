@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         peda.setOnClickListener(pedaListener);
         code.setOnClickListener(codeListener);
         media.setOnClickListener(mediaListener);
+        fun.setOnClickListener(funListener);
         //peda.setOnTouchListener(pedaTListener);
 
 
@@ -103,6 +104,16 @@ public class MainActivity extends AppCompatActivity {
             //setContentView(page2);
             Intent intent2 = new Intent(MainActivity.this, Listecode.class);
             intent2.putExtra("theme","media");
+            intent2.putStringArrayListExtra("value", al2);
+            startActivity(intent2);
+        }
+    };
+    private View.OnClickListener funListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //setContentView(page2);
+            Intent intent2 = new Intent(MainActivity.this, Page2Bis.class);
+            intent2.putExtra("theme","fun");
             intent2.putStringArrayListExtra("value", al2);
             startActivity(intent2);
         }

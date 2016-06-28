@@ -112,12 +112,12 @@ public class QuizInfo extends AppCompatActivity {
         if(compteur<20){
             Toast.makeText(
                     getApplicationContext(),
-                    "reponse correct : "+listeImage.get(nombre), Toast.LENGTH_SHORT
+                    "Réponse correcte : "+listeImage.get(nombre), Toast.LENGTH_SHORT
             ).show();
             if(listeImage.get(nombre).equals("information")){
                 if(radioButton1.isChecked()) {
                     resultat++;
-                    System.out.println("vraie");
+                    //System.out.println("vraie");
                 }
 
             }
@@ -136,7 +136,7 @@ public class QuizInfo extends AppCompatActivity {
                 if(listeImage.get(nombre).equals("information")){
                     if(radioButton1.isChecked()) {
                         resultat++;
-                        System.out.println("vraie");
+                        //System.out.println("vraie");
                     }
 
                 }
@@ -152,9 +152,9 @@ public class QuizInfo extends AppCompatActivity {
             }else {
                 Toast.makeText(
                         getApplicationContext(),
-                        "Resultat " + resultat + "/20", Toast.LENGTH_SHORT
+                        "Résultat " + resultat + "/20", Toast.LENGTH_SHORT
                 ).show();
-                button.setText("afficher le resultat");
+                button.setText("Afficher le résultat");
             }
 
         }

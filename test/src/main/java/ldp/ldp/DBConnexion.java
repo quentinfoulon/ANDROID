@@ -1,7 +1,6 @@
 package ldp.ldp;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,12 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
     private  Statement statement ;
     public ResultSet résultats;
     public ArrayList al = new ArrayList();
+    public ArrayList al2 = new ArrayList();
 
     @Override
     protected void onPreExecute() {
@@ -120,9 +119,22 @@ public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
         }
         return al;
         //String tabnumerique[][] = new String[soustheme][];
+    }
+    protected ArrayList requetelien() {
+        int i=0;
+        int indice=0;
 
+        try {
+            résultats = statement.executeQuery("select * from public.lien  ;");
 
-
+            while ( résultats.next() ) {
+                al2.add(résultats.getString("group")+";"+résultats.getString("titre")+";"+résultats.getString("url"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return al;
+        //String tabnumerique[][] = new String[soustheme][];
     }
 
 }

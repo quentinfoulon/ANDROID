@@ -101,6 +101,7 @@ public class Listecode extends AppCompatActivity {
             list.add("quiz de l'info");
             list.add("quiz des logos");
             list.add("quiz des Stéréotypes");
+            //list.add("site Internet");
             final ListView listview = (ListView) findViewById(R.id.listView);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, list);
@@ -126,6 +127,11 @@ public class Listecode extends AppCompatActivity {
                     else if (item.equals("quiz des Stéréotypes")) {
                         Intent intent2 = new Intent(Listecode.this, QuizStereo.class);
                         intent2.putExtra("theme", "media");
+                        startActivity(intent2);
+                    }
+                    else if (item.equals("site Internet")) {
+                        Intent intent2 = new Intent(Listecode.this, InternetPage2.class);
+                        intent2.putExtra("nom", "media");
                         startActivity(intent2);
                     }
 

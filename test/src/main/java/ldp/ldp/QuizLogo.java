@@ -113,7 +113,7 @@ public class QuizLogo extends AppCompatActivity {
             if(compteur<20){
                 Toast.makeText(
                         getApplicationContext(),
-                        "reponse correct : "+listeImage.get(nombre), Toast.LENGTH_SHORT
+                        "Réponse correcte : "+listeImage.get(nombre), Toast.LENGTH_SHORT
                 ).show();
                 if(String.valueOf(edittext1.getText()).equals(listeImage.get(nombre))){
                     resultat++;
