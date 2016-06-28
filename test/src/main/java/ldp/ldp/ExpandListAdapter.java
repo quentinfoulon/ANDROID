@@ -3,6 +3,7 @@ package ldp.ldp;
 /**
  * Created by quentin on 27/06/2016.
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        Child child = (Child) getChild(groupPosition, childPosition);
+        final Child child = (Child) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
                     .getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -46,9 +47,19 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         }
         TextView tv = (TextView) convertView.findViewById(R.id.country_name);
         ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
-
         tv.setText(child.getName().toString());
         iv.setImageResource(child.getImage());
+        iv.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                System.out.println("test de click "+child.getName().toString());
+                //Intent intent2 = new Intent(ImageList, InternetPage.class);
+                //intent2.putExtra("titre",String.valueOf(textview.getText()));
+                //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
+            }
+        });
 
         return convertView;
     }

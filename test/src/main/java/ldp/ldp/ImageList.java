@@ -3,25 +3,71 @@ package ldp.ldp;
 /**
  * Created by quentin on 27/06/2016.
  */
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 public class ImageList extends AppCompatActivity {
     private ExpandListAdapter ExpAdapter;
     private ArrayList<Group> ExpListItems;
     private ExpandableListView ExpandList;
+    private Toolbar toolbar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagelist);
 
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Intent intent = getIntent();
+        toolbar.setTitle(" "+intent.getStringExtra("theme"));
+        //definir notre toolbar en tant qu'actionBar
+        setSupportActionBar(toolbar);
+        //afficher le bouton retour
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#939292"));
+        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
+
         ExpListItems = SetStandardGroups();
         ExpAdapter = new ExpandListAdapter(ImageList.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
+        final TextView textview =(TextView) findViewById(R.id.country_name);
+        final ImageView imageView =(ImageView) findViewById(R.id.flag);
+
+        ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                //Intent intent2 = new Intent(ImageList.this, InternetPage.class);
+                //intent2.putExtra("titre",String.valueOf(textview.getText()));
+                //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
+                Toast.makeText(
+                        getApplicationContext(),
+                        "", Toast.LENGTH_SHORT
+                ).show();
+
+                //startActivity(intent2);
+                return false;
+            }
+        });
 
     }
 
