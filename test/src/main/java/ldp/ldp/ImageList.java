@@ -22,7 +22,10 @@ public class ImageList extends AppCompatActivity {
     private ExpandableListView ExpandList;
     private Toolbar toolbar ;
 
-    @Override
+
+    public ImageList() {
+
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagelist);
@@ -52,6 +55,10 @@ public class ImageList extends AppCompatActivity {
         final TextView textview =(TextView) findViewById(R.id.country_name);
         final ImageView imageView =(ImageView) findViewById(R.id.flag);
 
+
+
+
+
         ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
@@ -61,13 +68,14 @@ public class ImageList extends AppCompatActivity {
                 //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
                 Toast.makeText(
                         getApplicationContext(),
-                        "", Toast.LENGTH_SHORT
+                        "cliquer sur l'image pour l'afficher", Toast.LENGTH_SHORT
                 ).show();
 
                 //startActivity(intent2);
                 return false;
             }
         });
+
 
     }
 
@@ -132,6 +140,7 @@ public class ImageList extends AppCompatActivity {
 
         return list;
     }
+
 
 
 

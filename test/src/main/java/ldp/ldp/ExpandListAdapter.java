@@ -5,11 +5,14 @@ package ldp.ldp;
  */
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,10 +21,15 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<Group> groups;
+    private Drawable image;
+    private boolean click;
+    private String nom;
+
 
     public ExpandListAdapter(Context context, ArrayList<Group> groups) {
         this.context = context;
         this.groups = groups;
+        click=Boolean.FALSE;
     }
 
     @Override
@@ -46,7 +54,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.child_item, null);
         }
         TextView tv = (TextView) convertView.findViewById(R.id.country_name);
-        ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
+        final ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
         tv.setText(child.getName().toString());
         iv.setImageResource(child.getImage());
         iv.setOnClickListener(new View.OnClickListener() {
@@ -55,9 +63,30 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             public void onClick(View v) {
 
                 System.out.println("test de click "+child.getName().toString());
-                //Intent intent2 = new Intent(ImageList, InternetPage.class);
+                image=iv.getDrawable();
+                nom=child.getName().toString();
+                //click=Boolean.TRUE;
+               // Intent intent2 = new Intent(, InternetPage.class);
                 //intent2.putExtra("titre",String.valueOf(textview.getText()));
                 //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
+                //ImageList imagelist =new ImageList();
+                //imagelist.changePage(child.getName().toString());
+                //changePage();
+                //iv.setMaxHeight(match_parent);
+                //iv.setMaxHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+                //iv.setMaxWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+                if(click==Boolean.FALSE) {
+                    System.out.println("test de click "+click);
+                    iv.setLayoutParams(new RelativeLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+                    click=Boolean.TRUE;
+                }else {
+                    System.out.println("test de click "+click);
+                    iv.setLayoutParams(new RelativeLayout.LayoutParams(250, 150));
+                    click=Boolean.FALSE;
+                }
+
+
+
             }
         });
 
@@ -107,6 +136,15 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+    public Drawable getimage() {
+        return image;
+    }
+    public boolean onclick() {
+        return true;
+    }
+    public String getnom() {
+        return nom;
     }
 
 }
