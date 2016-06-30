@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -77,7 +76,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 //iv.setMaxWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 if(click==Boolean.FALSE) {
                     System.out.println("test de click "+click);
-                    iv.setLayoutParams(new RelativeLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+                    iv.setLayoutParams(new RelativeLayout.LayoutParams(2500, 1400));
                     click=Boolean.TRUE;
                 }else {
                     System.out.println("test de click "+click);

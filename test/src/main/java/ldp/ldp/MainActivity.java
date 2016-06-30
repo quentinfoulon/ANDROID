@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button fun ;
     public ArrayList al2 ;
     private DBConnexion db;
+    private Boolean test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         {
             // Faire quelque chose s'il n'est pas connecté
         }
+        Boolean test;
+        test=Boolean.FALSE;
+
+
+
 
 
 
@@ -86,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         " Pas de connexion a internet",
                         Toast.LENGTH_SHORT).show();
             }
+            //db.onPostExecute(test);// test pour la fin de la requete
+            /*if(test){
+                System.out.println("requete fini");
+            }*/
         }
     };
     private View.OnClickListener codeListener = new View.OnClickListener() {

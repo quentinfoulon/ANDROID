@@ -41,7 +41,7 @@ public class QuizStereo extends AppCompatActivity {
     //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_info);
+        setContentView(R.layout.quiz_stereo);
         Intent intent = getIntent();
         //ajout des toolbar avec leur bouton d'utilisation
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);

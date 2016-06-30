@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
+public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
     private  Statement statement ;
     public ResultSet résultats;
     public ArrayList al = new ArrayList();
@@ -33,7 +33,7 @@ public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
     }
 
     @Override
-    protected ArrayList doInBackground(Void... params) {
+    protected Boolean doInBackground(Void... params) {
         Connection conn=null;
         try {
             Class.forName("org.postgresql.Driver");
@@ -72,12 +72,13 @@ public class DBConnexion extends AsyncTask<Void, Void, ArrayList> {
     }
 
     @Override
-    protected void onPostExecute(ArrayList al) {
+    protected void onPostExecute(Boolean a) {
         /*
          *    do something with data here
          *    display it or send to mainactivity
          *    close any dialogs/ProgressBars/etc...
         */
+        a=Boolean.TRUE;
 
     }
     protected void requete() {

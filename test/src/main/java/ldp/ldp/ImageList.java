@@ -93,22 +93,82 @@ public class ImageList extends AppCompatActivity {
         ch_list = new ArrayList<Child>();
     // ajout des info pour la partie com
         Group gru = new Group();
-        gru.setName("commucnication");
+        gru.setName("Commucnication");
         Child ch = new Child();ch.setName("Affiche café des sciences petits deb");ch.setImage(R.drawable.affiche_cafe_des_sciences_petits_debrouillards);ch_list.add(ch);
         Child ch2 = new Child();ch2.setName("l'air");ch2.setImage(R.drawable.air);ch_list.add(ch2);
         Child ch3 = new Child();ch3.setName("l'eau");ch3.setImage(R.drawable.eau);ch_list.add(ch3);
-        Child ch4 = new Child();ch4.setName("Enquetes Scientifique");ch4.setImage(R.drawable.enquete_scientifique);ch_list.add(ch4);
-        Child ch5 = new Child();ch5.setName("Festival sciencers metisse");ch5.setImage(R.drawable.festival_science_metisse);ch_list.add(ch5);
+        Child ch4 = new Child();ch4.setName("Enquetes Scientifique");ch4.setImage(R.drawable.affiche_enquete_scientifique);ch_list.add(ch4);
+        Child ch5 = new Child();ch5.setName("Festival sciences metisses");ch5.setImage(R.drawable.affiche_sciences_metisses_2_);ch_list.add(ch5);
         Child ch6 = new Child();ch6.setName("Fete de la science");ch6.setImage(R.drawable.fete_de_la_science);ch_list.add(ch6);
         Child ch7 = new Child();ch7.setName("Le science tour");ch7.setImage(R.drawable.le_science_tour);ch_list.add(ch7);
         Child ch8 = new Child();ch8.setName("Les architectes du vivants");ch8.setImage(R.drawable.les_architectes_du_vivants);ch_list.add(ch8);
         Child ch9 = new Child();ch9.setName("Ramene ta science pas ta fraise");ch9.setImage(R.drawable.ramene_ta_science_pas_ta_fraise);ch_list.add(ch9);
-        Child ch10 = new Child();ch10.setName("Science tour");ch10.setImage(R.drawable.science_tour);ch_list.add(ch10);
+        //Child ch10 = new Child();ch10.setName("Science tour");ch10.setImage(R.drawable.sciencetour);ch_list.add(ch10);
         Child ch11 = new Child();ch11.setName("Transition");ch11.setImage(R.drawable.transition);ch_list.add(ch11);
+        Child ch12 = new Child();ch12.setName("Club");ch12.setImage(R.drawable.evenementon174);ch_list.add(ch12);
+        Child ch13 = new Child();ch13.setName("Mini-stage");ch13.setImage(R.drawable.ministage);ch_list.add(ch13);
         //Child ch12 = new Child();ch.setName("l'eau");ch.setImage(R.drawable.eau);ch_list.add(ch12);
         gru.setItems(ch_list);
-    //fin de l'ajout pour la partie com
         list.add(gru);
+    //fin de l'ajout pour la partie com
+        // ajout des info pour la partie modulothèque
+            // partie biodiversité
+        ArrayList<Child> ch_list2;
+        ch_list2 = new ArrayList<Child>();
+        Group gru2 = new Group();
+        gru2.setName("Modulothèque Biodiversité");
+        Child ch14 = new Child();ch14.setName("Difficile de faire le mur");ch14.setImage(R.drawable.difficiledefairelemur_biodiversite);ch_list2.add(ch14);
+        Child ch15 = new Child();ch15.setName("Stands de Darwin");ch15.setImage(R.drawable.modulothequebiodiversite);ch_list2.add(ch15);
+        Child ch16 = new Child();ch16.setName("Stands Concurrent ou associés");ch16.setImage(R.drawable.modulothequebiodiversite2);ch_list2.add(ch16);
+        Child ch17 = new Child();ch17.setName("Stands Qui est mangé par qui");ch17.setImage(R.drawable.modulotheque_quiestmangepar_qui);ch_list2.add(ch17);
+        gru2.setItems(ch_list2);
+        list.add(gru2);
+        // fin partie biodiversité
+        // partie transition
+        Group gru3 = new Group();
+        gru3.setName("Modulothèque Transition / développement durable");
+        ArrayList<Child> ch_list3;
+        ch_list3 = new ArrayList<Child>();
+        Child ch18 = new Child();ch18.setName("Stand Pollution");ch18.setImage(R.drawable.pollution_transition);ch_list3.add(ch18);
+        Child ch19 = new Child();ch19.setName("Stand Assiette au pétrol");ch19.setImage(R.drawable.modulodd);ch_list3.add(ch19);
+        Child ch20 = new Child();ch20.setName("Stand Passé d'une carotte");ch20.setImage(R.drawable.modulothequelepassedunecarotte);ch_list3.add(ch20);
+        Child ch21 = new Child();ch21.setName("BSM fin mai 2015");ch21.setImage(R.drawable.modulothequebsmfinmai2015);ch_list3.add(ch21);
+        Child ch22 = new Child();ch22.setName("BSM fin mai 2015 (2)");ch22.setImage(R.drawable.modulothequebsmfinmai20152);ch_list3.add(ch22);
+        Child ch24 = new Child();ch24.setName("Stand boucle est bouclée");ch24.setImage(R.drawable.modulothequeboucleboucle_transition);ch_list3.add(ch24);
+
+        gru3.setItems(ch_list3);
+        list.add(gru3);
+        // fin partie transition
+        // partie Santé
+        Group gru4 = new Group();
+        gru4.setName("Modulothèque Santé");
+        ArrayList<Child> ch_list4;
+        ch_list4 = new ArrayList<Child>();
+        Child ch23 = new Child();ch23.setName("Stand Livraison 24h/24h");ch23.setImage(R.drawable.modulothequebougetoncorps);ch_list4.add(ch23);
+        Child ch25 = new Child();ch25.setName("Stand Cuisine ta santé");ch25.setImage(R.drawable.les_debrouillardscuisinent_ta_sante);ch_list4.add(ch25);
+        Child ch33 = new Child();ch33.setName("Stand A l'eau");ch33.setImage(R.drawable.sante1);ch_list4.add(ch33);
+        Child ch32 = new Child();ch32.setName("Stand Repas de cellules");ch32.setImage(R.drawable.sante2);ch_list4.add(ch32);
+
+        gru4.setItems(ch_list4);
+        list.add(gru4);
+        // fin partie santé
+        // partie Santé
+        Group gru5 = new Group();
+        gru5.setName("Modulothèque Solidarité");
+        ArrayList<Child> ch_list5;
+        ch_list5 = new ArrayList<Child>();
+        Child ch26 = new Child();ch26.setName("Stand Les enfant ont des droits");ch26.setImage(R.drawable.solidarite1);ch_list5.add(ch26);
+        Child ch27 = new Child();ch27.setName("Stand ce qui devait arriver areva");ch27.setImage(R.drawable.solidarite2);ch_list5.add(ch27);
+        Child ch28 = new Child();ch28.setName("Stand Riches et pourtant pauvres");ch28.setImage(R.drawable.solidarite3);ch_list5.add(ch28);
+        Child ch29 = new Child();ch29.setName("Stand Sur les pas des migrants");ch29.setImage(R.drawable.solidarite4);ch_list5.add(ch29);
+        Child ch30 = new Child();ch30.setName("Stand Difficile de faire le mur");ch30.setImage(R.drawable.solidarite5);ch_list5.add(ch30);
+        Child ch31 = new Child();ch31.setName("Stand Ou vive les migrants");ch31.setImage(R.drawable.solidarite6);ch_list5.add(ch31);
+
+        gru5.setItems(ch_list5);
+        list.add(gru5);
+        // fin partie santé
+
+
        /* int size = 4;
         int j = 0;
 
