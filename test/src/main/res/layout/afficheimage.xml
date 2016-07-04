@@ -29,10 +29,10 @@
             android:layout_weight="2">
 
 
-            <ImageView
+            <WebView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView2" />
+                android:id="@+id/web2" />
         </LinearLayout>
 
 

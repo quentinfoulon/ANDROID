@@ -64,14 +64,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 System.out.println("test de click "+child.getName().toString());
                 image=iv.getDrawable();
                 nom=child.getName().toString();
-                //click=Boolean.TRUE;
-               // Intent intent2 = new Intent(, InternetPage.class);
-                //intent2.putExtra("titre",String.valueOf(textview.getText()));
-                //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
-                //ImageList imagelist =new ImageList();
-                //imagelist.changePage(child.getName().toString());
-                //changePage();
-                //iv.setMaxHeight(match_parent);
+
                 //iv.setMaxHeight(ViewGroup.LayoutParams.MATCH_PARENT);
                 //iv.setMaxWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 if(click==Boolean.FALSE) {

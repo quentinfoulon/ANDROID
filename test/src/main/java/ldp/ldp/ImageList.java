@@ -157,7 +157,7 @@ public class ImageList extends AppCompatActivity {
         gru5.setName("Modulothèque Solidarité");
         ArrayList<Child> ch_list5;
         ch_list5 = new ArrayList<Child>();
-        Child ch26 = new Child();ch26.setName("Stand Les enfant ont des droits");ch26.setImage(R.drawable.solidarite1);ch_list5.add(ch26);
+        Child ch26 = new Child();ch26.setName("Stand Les enfants ont des droits");ch26.setImage(R.drawable.solidarite1);ch_list5.add(ch26);
         Child ch27 = new Child();ch27.setName("Stand ce qui devait arriver areva");ch27.setImage(R.drawable.solidarite2);ch_list5.add(ch27);
         Child ch28 = new Child();ch28.setName("Stand Riches et pourtant pauvres");ch28.setImage(R.drawable.solidarite3);ch_list5.add(ch28);
         Child ch29 = new Child();ch29.setName("Stand Sur les pas des migrants");ch29.setImage(R.drawable.solidarite4);ch_list5.add(ch29);

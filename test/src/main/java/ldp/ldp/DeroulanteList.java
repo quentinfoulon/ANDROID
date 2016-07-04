@@ -68,6 +68,75 @@ public class DeroulanteList extends AppCompatActivity {
                     finish();
                 }
             });
+        }else if(intent.getStringExtra("theme").equals("media")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("atelier : educoMedia");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }else if(intent.getStringExtra("theme").equals("video")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("fun : Video");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }else if(intent.getStringExtra("theme").equals("news")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("fun : News");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }
+        else if(intent.getStringExtra("theme").equals("extra")){
+            //ajout des toolbar avec leur bouton d'utilisation
+            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            toolbar.setTitle("fun : Extra");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.parseColor("#939292"));
+            }
+            //action du retour a la page .
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
         }
         else {
             toolbar = (Toolbar) findViewById(R.id.my_toolbar);

@@ -61,7 +61,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="LIEN,CONTACT"
+                android:text="News"
                 android:id="@+id/lien"
                 android:layout_weight="1"
                 android:background="#ED86B6"

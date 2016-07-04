@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.VideoView;
 
 /**
  * Created by quentin on 28/06/2016.
@@ -16,13 +17,14 @@ import android.widget.ImageView;
 public class AfficheImage extends AppCompatActivity {
     private Toolbar toolbar ;
     private ImageView imageSwitcher;
-    WebView webview;
+    private VideoView videoview;
+    private WebView webview;
     //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.internetpage);
+        setContentView(R.layout.afficheimage);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         Intent intent = getIntent();
         toolbar.setTitle(" "+intent.getStringExtra("titre"));
@@ -44,10 +46,19 @@ public class AfficheImage extends AppCompatActivity {
             }
         });
         int i ;
+        /*videoview = (VideoView)findViewById(R.id.videoView);
+        MediaController mediaController= new MediaController(this);
+        mediaController.setAnchorView(videoview);
 
+        Uri uri= Uri.parse("https://youtu.be/iNCENdLWwnk");
+        videoview.setMediaController(mediaController);
+        videoview.setVideoURI(uri);
+        videoview.requestFocus();
 
-
-        imageSwitcher = (ImageView)findViewById(R.id.imageView);
+        videoview.start();*/
+        WebView webview = (WebView) findViewById(R.id.web2);
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.loadUrl("https://www.youtube.com/watch?v=iNCENdLWwnk");
 
     }
 }
