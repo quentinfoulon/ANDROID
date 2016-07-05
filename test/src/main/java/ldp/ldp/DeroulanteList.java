@@ -85,24 +85,8 @@ public class DeroulanteList extends AppCompatActivity {
                     finish();
                 }
             });
-        }else if(intent.getStringExtra("theme").equals("video")){
-            //ajout des toolbar avec leur bouton d'utilisation
-            toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-            toolbar.setTitle("fun : Video");
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(Color.parseColor("#939292"));
-            }
-            //action du retour a la page .
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
-                }
-            });
-        }else if(intent.getStringExtra("theme").equals("news")){
+        }
+        else if(intent.getStringExtra("theme").equals("news")){
             //ajout des toolbar avec leur bouton d'utilisation
             toolbar = (Toolbar) findViewById(R.id.my_toolbar);
             toolbar.setTitle("fun : News");
@@ -140,8 +124,10 @@ public class DeroulanteList extends AppCompatActivity {
         }
         else {
             toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-
-            toolbar.setTitle("Fiche Peda : " + intent.getStringExtra("theme"));
+            if(intent.getStringExtra("theme").equals("video"))
+                toolbar.setTitle("fun : " + intent.getStringExtra("theme"));
+            else
+                toolbar.setTitle("Fiche Peda : " + intent.getStringExtra("theme"));
             //definir notre toolbar en tant qu'actionBar
             setSupportActionBar(toolbar);
             //afficher le bouton retour
@@ -196,7 +182,12 @@ public class DeroulanteList extends AppCompatActivity {
                                     + " -> "
                                     + listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)), Toast.LENGTH_SHORT
                     ).show();
-                    Intent intent2 = new Intent(DeroulanteList.this, InternetPage.class);
+                    Intent intent2;
+                    Intent intent = getIntent();
+                    if(intent.getStringExtra("theme").equals("video"))
+                         intent2 = new Intent(DeroulanteList.this, AfficheImage.class);
+                    else
+                         intent2 = new Intent(DeroulanteList.this, InternetPage.class);
                     intent2.putExtra("url", listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)));
                     intent2.putExtra("nom", expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
                     startActivity(intent2);

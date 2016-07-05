@@ -4,9 +4,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application android:allowBackup="true" android:icon="@drawable/logodeb"
-        android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"
 
+        android:label="Les Petits Debrouillards" android:supportsRtl="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+         >
+        <activity android:name=".MainActivity"
             >
 
             <intent-filter>

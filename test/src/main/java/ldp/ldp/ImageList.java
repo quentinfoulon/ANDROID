@@ -126,7 +126,7 @@ public class ImageList extends AppCompatActivity {
         // fin partie biodiversité
         // partie transition
         Group gru3 = new Group();
-        gru3.setName("Modulothèque Transition / développement durable");
+        gru3.setName("Modulothèque Transitions");
         ArrayList<Child> ch_list3;
         ch_list3 = new ArrayList<Child>();
         Child ch18 = new Child();ch18.setName("Stand Pollution");ch18.setImage(R.drawable.pollution_transition);ch_list3.add(ch18);
@@ -152,7 +152,7 @@ public class ImageList extends AppCompatActivity {
         gru4.setItems(ch_list4);
         list.add(gru4);
         // fin partie santé
-        // partie Santé
+        // partie Solidarité
         Group gru5 = new Group();
         gru5.setName("Modulothèque Solidarité");
         ArrayList<Child> ch_list5;
@@ -166,7 +166,37 @@ public class ImageList extends AppCompatActivity {
 
         gru5.setItems(ch_list5);
         list.add(gru5);
-        // fin partie santé
+        // fin partie Solidarité
+        // partie Solidarité
+        Group gru6 = new Group();
+        gru6.setName("Modulothèque Sexothèque");
+        ArrayList<Child> ch_list6;
+        ch_list6 = new ArrayList<Child>();
+        Child ch34 = new Child();ch34.setName("Stand Appareil Genital Masculin ");ch34.setImage(R.drawable.sexo1);ch_list6.add(ch34);
+        Child ch35 = new Child();ch35.setName("Stand Appareil Genital Feminin");ch35.setImage(R.drawable.sexo2);ch_list6.add(ch35);
+        Child ch36 = new Child();ch36.setName("Stand Info-Intox Feminin");ch36.setImage(R.drawable.sexo3);ch_list6.add(ch36);
+        Child ch37 = new Child();ch37.setName("Stand Info-Intox Masculin");ch37.setImage(R.drawable.sexo4);ch_list6.add(ch37);
+        Child ch38 = new Child();ch38.setName("Stand Le Parcours du Combatant");ch38.setImage(R.drawable.sexo7);ch_list6.add(ch38);
+        Child ch39 = new Child();ch39.setName("Stand Ovule contre Spermatozoide");ch39.setImage(R.drawable.sexo8);ch_list6.add(ch39);
+        Child ch40 = new Child();ch40.setName("Stand Historique de l'Homosexualité");ch40.setImage(R.drawable.sexo6);ch_list6.add(ch40);
+        Child ch41 = new Child();ch41.setName("Stand Les droits des femmes dans le temps");ch41.setImage(R.drawable.sexo5);ch_list6.add(ch41);
+        gru6.setItems(ch_list6);
+        list.add(gru6);
+        // fin partie Solidarité
+        // partie les architecte du vivant
+        Group gru7 = new Group();
+        gru7.setName("Modulothèque Architecte du Vivant");
+        ArrayList<Child> ch_list7;
+        ch_list7 = new ArrayList<Child>();
+        Child ch42 = new Child();ch42.setName("Stand Corps sous controle");ch42.setImage(R.drawable.archi1);ch_list7.add(ch42);
+        Child ch43 = new Child();ch43.setName("Stand Les cellules ,quelle peche");ch43.setImage(R.drawable.archi2);ch_list7.add(ch43);
+        Child ch44 = new Child();ch44.setName("Stand Global");ch44.setImage(R.drawable.archi3);ch_list7.add(ch44);
+        Child ch45 = new Child();ch45.setName("Stand La vie c'est quoi?");ch45.setImage(R.drawable.archi4);ch_list7.add(ch45);
+        Child ch46 = new Child();ch46.setName("Stand La vie des cellules");ch46.setImage(R.drawable.archi5);ch_list7.add(ch46);
+
+        gru7.setItems(ch_list7);
+        list.add(gru7);
+        // fin partie Solidarité
 
 
        /* int size = 4;

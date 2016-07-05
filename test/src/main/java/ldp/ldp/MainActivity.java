@@ -76,15 +76,15 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             //setContentView(page2);
             if (isOnline()) {
-                Intent intent = new Intent(MainActivity.this, page2.class);
-                al2 = new ArrayList(db.al);
-                try {
-                    System.out.println("test: " + al2.get(0));
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),
-                            " Probleme de connection a la Base de données.",
-                            Toast.LENGTH_SHORT).show();
-                }
+                    Intent intent = new Intent(MainActivity.this, page2.class);
+                    al2 = new ArrayList(db.al);
+                    try {
+                        System.out.println("test: " + al2.get(0));
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(),
+                                " Probleme de connection a la Base de données.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 intent.putStringArrayListExtra("value", al2);
                 startActivity(intent);
             }else{
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //setContentView(page2);
+            al2 = new ArrayList(db.al);
             Intent intent2 = new Intent(MainActivity.this, Page2Bis.class);
             intent2.putExtra("theme","fun");
             intent2.putStringArrayListExtra("value", al2);

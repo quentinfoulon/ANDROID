@@ -1,13 +1,17 @@
 package ldp.ldp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * Created by quentin on 02/06/2016.
@@ -58,12 +62,32 @@ public class Page2Bis extends AppCompatActivity {
         public void onClick(View v) {
 
             Intent intent2 = getIntent();
-
-            //setContentView(page2);
             Intent intent = new Intent(Page2Bis.this, DeroulanteList.class);
+            if (isOnline()) {
+
+
+                try {
+                    System.out.println("test: " + intent2.getStringArrayListExtra("value").get(0));
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),
+                            " Probleme de connection a la Base de données.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
+                intent.putExtra("theme","video");
+                startActivity(intent);
+            }else{
+            Toast.makeText(getApplicationContext(),
+                    " Pas de connexion a internet",
+                    Toast.LENGTH_SHORT).show();
+            }
+            //setContentView(page2);
+            /*Intent intent = new Intent(Page2Bis.this, DeroulanteList.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
             intent.putExtra("theme","video");
-            startActivity(intent);
+            startActivity(intent);*/
+            intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
+            intent.putExtra("theme","video");
 
 
         }
@@ -113,5 +137,11 @@ public class Page2Bis extends AppCompatActivity {
 
         }
     };
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
 
 }

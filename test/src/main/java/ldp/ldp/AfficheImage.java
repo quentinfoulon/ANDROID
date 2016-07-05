@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.VideoView;
@@ -27,7 +28,7 @@ public class AfficheImage extends AppCompatActivity {
         setContentView(R.layout.afficheimage);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         Intent intent = getIntent();
-        toolbar.setTitle(" "+intent.getStringExtra("titre"));
+        toolbar.setTitle(" "+intent.getStringExtra("nom"));
         //definir notre toolbar en tant qu'actionBar
         setSupportActionBar(toolbar);
         //afficher le bouton retour
@@ -57,8 +58,9 @@ public class AfficheImage extends AppCompatActivity {
 
         videoview.start();*/
         WebView webview = (WebView) findViewById(R.id.web2);
+        webview.getSettings().setPluginState(WebSettings.PluginState.ON);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("https://www.youtube.com/watch?v=iNCENdLWwnk");
+        webview.loadUrl(intent.getStringExtra("url"));
 
     }
 }
