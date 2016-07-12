@@ -63,6 +63,7 @@ public class Page2Bis extends AppCompatActivity {
 
             Intent intent2 = getIntent();
             Intent intent = new Intent(Page2Bis.this, DeroulanteList.class);
+            boolean ok=Boolean.TRUE;
             if (isOnline()) {
 
 
@@ -72,9 +73,11 @@ public class Page2Bis extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),
                             " Probleme de connection a la Base de données.",
                             Toast.LENGTH_SHORT).show();
+                    ok=Boolean.FALSE;
                 }
                 intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
                 intent.putExtra("theme","video");
+                if(ok)
                 startActivity(intent);
             }else{
             Toast.makeText(getApplicationContext(),

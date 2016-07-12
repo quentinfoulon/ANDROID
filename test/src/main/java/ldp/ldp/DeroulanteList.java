@@ -185,7 +185,7 @@ public class DeroulanteList extends AppCompatActivity {
                     Intent intent2;
                     Intent intent = getIntent();
                     if(intent.getStringExtra("theme").equals("video"))
-                         intent2 = new Intent(DeroulanteList.this, AfficheImage.class);
+                         intent2 = new Intent(DeroulanteList.this, AfficheInternet.class);
                     else
                          intent2 = new Intent(DeroulanteList.this, InternetPage.class);
                     intent2.putExtra("url", listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)));

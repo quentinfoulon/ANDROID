@@ -15,7 +15,7 @@ import android.widget.VideoView;
 /**
  * Created by quentin on 28/06/2016.
  */
-public class AfficheImage extends AppCompatActivity {
+public class AfficheInternet extends AppCompatActivity {
     private Toolbar toolbar ;
     private ImageView imageSwitcher;
     private VideoView videoview;

@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //setContentView(page2);
+            boolean ok=Boolean.TRUE;
             if (isOnline()) {
                     Intent intent = new Intent(MainActivity.this, page2.class);
                     al2 = new ArrayList(db.al);
@@ -82,10 +83,13 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("test: " + al2.get(0));
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(),
-                                " Probleme de connection a la Base de données.",
+                                " Donnée en cours de chargement .",
+
                                 Toast.LENGTH_SHORT).show();
+                        ok=Boolean.FALSE;
                     }
                 intent.putStringArrayListExtra("value", al2);
+                if(ok)
                 startActivity(intent);
             }else{
                 Toast.makeText(getApplicationContext(),

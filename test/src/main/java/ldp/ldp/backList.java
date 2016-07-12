@@ -1,136 +1,28 @@
 package ldp.ldp;
 
-/**
- * Created by quentin on 27/06/2016.
- */
-
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.os.AsyncTask;
 
 import java.util.ArrayList;
-import java.util.logging.Handler;
+
+/**
+ * Created by quentin on 05/07/2016.
+ */
+public class BackList extends AsyncTask<Void, Void, Boolean> {
+    @Override
+    protected Boolean doInBackground(Void... params) {
+
+        SetStandardGroups();
 
 
-public class ImageList extends AppCompatActivity {
-    private ExpandListAdapter ExpAdapter;
-    private ArrayList<Group> ExpListItems;
-    private ExpandableListView ExpandList;
-    private  Handler handler;
-    private Toolbar toolbar ;
-
-
-    public ImageList() {
-
+        return null;
     }
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.imagelist);
-        // create a handler to update the UI
-
-        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        Intent intent = getIntent();
-        toolbar.setTitle(" "+intent.getStringExtra("theme"));
-        //definir notre toolbar en tant qu'actionBar
-        setSupportActionBar(toolbar);
-        //afficher le bouton retour
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.parseColor("#939292"));
-        }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
-
-
-
-        /*handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg){
-
-            }
-        };
-        Thread background = new Thread(new Runnable(){
-            Bundle messageBundle = new Bundle();
-            Message myMessage;
-            public void run(){
-                try {
-                    Thread.sleep(1000);
-                    myMessage=handler.();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        });*/
-
-        // probleme de temps d'execution au niveau du clic sur
-        BackList backList = new BackList();
-        backList.execute();
-        ExpListItems = SetStandardGroups();
-        ExpAdapter = new ExpandListAdapter(ImageList.this, ExpListItems);
-        ExpandList.setAdapter(ExpAdapter);
-        final TextView textview =(TextView) findViewById(R.id.country_name);
-        final ImageView imageView =(ImageView) findViewById(R.id.flag);
-        ExpandList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                          " veuillez patienter:",
-
-                        Toast.LENGTH_SHORT).show();
-                SystemClock.sleep(1000);
-
-            }
-        });
-
-
-
-
-
-        ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                //Intent intent2 = new Intent(ImageList.this, InternetPage.class);
-                //intent2.putExtra("titre",String.valueOf(textview.getText()));
-                //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
-                Toast.makeText(
-                        getApplicationContext(),
-                        "cliquer sur l'image pour l'afficher", Toast.LENGTH_SHORT
-                ).show();
-
-                //startActivity(intent2);
-                return false;
-            }
-        });
-
-
-    }
-
     public ArrayList<Group> SetStandardGroups() {
 
         ArrayList<Group> list = new ArrayList<Group>();
 
         ArrayList<Child> ch_list;
         ch_list = new ArrayList<Child>();
-    // ajout des info pour la partie com
+        // ajout des info pour la partie com
         Group gru = new Group();
         gru.setName("Communication");
         Child ch = new Child();ch.setName("Affiche café des sciences petits deb");ch.setImage(R.drawable.affiche_cafe_des_sciences_petits_debrouillards);ch_list.add(ch);
@@ -149,9 +41,9 @@ public class ImageList extends AppCompatActivity {
         //Child ch12 = new Child();ch.setName("l'eau");ch.setImage(R.drawable.eau);ch_list.add(ch12);
         gru.setItems(ch_list);
         list.add(gru);
-    //fin de l'ajout pour la partie com
+        //fin de l'ajout pour la partie com
         // ajout des info pour la partie modulothèque
-            // partie biodiversité
+        // partie biodiversité
         ArrayList<Child> ch_list2;
         ch_list2 = new ArrayList<Child>();
         Group gru2 = new Group();
@@ -259,19 +151,15 @@ public class ImageList extends AppCompatActivity {
             size = size + 4;
         }*/
         // ajout d'image dans la partie images , utiliser des goupes :
-            // Group gru = new Group();
-            // gru.setName(group_name);
+        // Group gru = new Group();
+        // gru.setName(group_name);
         // utiliser les childs :
-            // Child ch = new Child();
-            // ch.setName(images_name[j]);
-            // ch.setImage(Images[j]);
+        // Child ch = new Child();
+        // ch.setName(images_name[j]);
+        // ch.setImage(Images[j]);
         // ajout des childs dans les group approprié pour cela ajouté les child dans une list pouis ajouté cette list au group
-            // gru.setItems(ch_list);
+        // gru.setItems(ch_list);
 
         return list;
     }
-
-
-
-
 }

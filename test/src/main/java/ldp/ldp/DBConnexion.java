@@ -66,7 +66,7 @@ public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        requete();
+        //requete();
         requetecountnumerique();
         return null;
     }
@@ -93,9 +93,9 @@ public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
 
                 try {
                     String soustheme = résultats.getString( "soustheme" );
-                    System.out.println(soustheme);
+                    //System.out.println(soustheme);
                     String theme = résultats.getString( "theme" );
-                    System.out.println(theme);
+                    //System.out.println(theme);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

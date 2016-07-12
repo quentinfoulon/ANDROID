@@ -82,7 +82,7 @@
 
             >
         </activity>
-        <activity android:name=".AfficheImage"
+        <activity android:name=".AfficheInternet"
 
             >
         </activity>

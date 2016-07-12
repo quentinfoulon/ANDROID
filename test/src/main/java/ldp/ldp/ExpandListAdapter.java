@@ -6,6 +6,7 @@ package ldp.ldp;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-
         final Child child = (Child) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -57,10 +57,8 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         tv.setText(child.getName().toString());
         iv.setImageResource(child.getImage());
         iv.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
                 System.out.println("test de click "+child.getName().toString());
                 image=iv.getDrawable();
                 nom=child.getName().toString();
@@ -76,9 +74,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                     iv.setLayoutParams(new RelativeLayout.LayoutParams(250, 150));
                     click=Boolean.FALSE;
                 }
-
-
-
             }
         });
 
@@ -109,14 +104,20 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
+        //System.out.println("test de click 2");
         Group group = (Group) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater inf = (LayoutInflater) context
-                    .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.group_item, null);
+            System.out.println("test de click 3");
+            //LayoutInflater inf = (LayoutInflater) context
+                    //.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            //convertView = inf.inflate(R.layout.group_item, null);
+            //SystemClock.sleep(1000);
         }
         TextView tv = (TextView) convertView.findViewById(R.id.group_name);
         tv.setText(group.getName());
+        SystemClock.sleep(100);
+
+        System.out.println("test pour la pause ");
         return convertView;
     }
 
@@ -128,15 +129,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
-    }
-    public Drawable getimage() {
-        return image;
-    }
-    public boolean onclick() {
-        return true;
-    }
-    public String getnom() {
-        return nom;
     }
 
 }
