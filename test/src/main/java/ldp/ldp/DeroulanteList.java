@@ -32,7 +32,11 @@ public class DeroulanteList extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.deroulantelist);
+        if(getIntent().getStringExtra("theme").equals("formation"))
+            setContentView(R.layout.formation);
+        else
+            setContentView(R.layout.deroulantelist);
+
         Intent intent = getIntent();
         if(intent.getStringExtra("theme").equals("code")){
             //ajout des toolbar avec leur bouton d'utilisation
@@ -86,10 +90,10 @@ public class DeroulanteList extends AppCompatActivity {
                 }
             });
         }
-        else if(intent.getStringExtra("theme").equals("news")){
+        else if(intent.getStringExtra("theme").equals("formation")){
             //ajout des toolbar avec leur bouton d'utilisation
             toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-            toolbar.setTitle("fun : News");
+            toolbar.setTitle("Formation");
             setSupportActionBar(toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -101,6 +105,62 @@ public class DeroulanteList extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     finish();
+                }
+            });
+            ArrayList<String> al2 = new ArrayList(intent.getStringArrayListExtra("value"));
+            ArrayList<String> alTitre = new ArrayList<String>();
+            String test[] = {"test", "test2"};
+            String tabResume[][] = new String[al2.size()][4];
+
+            expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+            expandableListDetail = ExpandableListDataPump.getData(al2, intent.getStringExtra("theme"));
+            listlien = ExpandableListDataPump.getlien();
+            System.out.println("" + intent.getStringExtra("theme") + "");
+            expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+            expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+            expandableListView.setAdapter(expandableListAdapter);
+            expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    Toast.makeText(getApplicationContext(),
+                            expandableListTitle.get(groupPosition) + " Liste étendue .",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+                @Override
+                public void onGroupCollapse(int groupPosition) {
+                    Toast.makeText(getApplicationContext(),
+                            expandableListTitle.get(groupPosition) + " Liste réduite.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+            expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v,
+                                            int groupPosition, int childPosition, long id) {
+                    //listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                    Toast.makeText(
+                            getApplicationContext(),
+                            expandableListTitle.get(groupPosition)
+                                    + " -> "
+                                    + listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)), Toast.LENGTH_SHORT
+                    ).show();
+                    Intent intent2;
+                    Intent intent = getIntent();
+                    if(intent.getStringExtra("theme").equals("video"))
+                        intent2 = new Intent(DeroulanteList.this, AfficheInternet.class);
+                    else
+                        intent2 = new Intent(DeroulanteList.this, InternetPage.class);
+                    intent2.putExtra("url", listlien.get(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition)));
+                    intent2.putExtra("nom", expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                    startActivity(intent2);
+                    return false;
                 }
             });
         }

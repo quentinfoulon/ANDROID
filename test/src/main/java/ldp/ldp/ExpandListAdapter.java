@@ -6,7 +6,6 @@ package ldp.ldp;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,11 +112,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             //convertView = inf.inflate(R.layout.group_item, null);
             //SystemClock.sleep(1000);
         }
-        TextView tv = (TextView) convertView.findViewById(R.id.group_name);
-        tv.setText(group.getName());
-        SystemClock.sleep(100);
 
-        System.out.println("test pour la pause ");
         return convertView;
     }
 

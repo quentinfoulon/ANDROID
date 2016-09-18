@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -80,8 +79,6 @@ public class ImageList extends AppCompatActivity {
         });*/
 
         // probleme de temps d'execution au niveau du clic sur
-        BackList backList = new BackList();
-        backList.execute();
         ExpListItems = SetStandardGroups();
         ExpAdapter = new ExpandListAdapter(ImageList.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
@@ -95,7 +92,7 @@ public class ImageList extends AppCompatActivity {
                           " veuillez patienter:",
 
                         Toast.LENGTH_SHORT).show();
-                SystemClock.sleep(1000);
+
 
             }
         });
@@ -104,7 +101,7 @@ public class ImageList extends AppCompatActivity {
 
 
 
-        ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+       ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {

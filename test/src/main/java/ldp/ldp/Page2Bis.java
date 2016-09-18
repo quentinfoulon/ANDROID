@@ -117,9 +117,9 @@ public class Page2Bis extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(Page2Bis.this, DeroulanteList.class);
+            Intent intent = new Intent(Page2Bis.this, Formation.class);
             intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
-            intent.putExtra("theme","news");
+            intent.putExtra("theme","formation");
             startActivity(intent);
 
 
