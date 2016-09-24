@@ -1,5 +1,6 @@
 package ldp.ldp;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,12 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 /**
  * Created by quentin on 12/07/2016.
@@ -24,6 +30,7 @@ public class Formation extends AppCompatActivity {
     private Toolbar toolbar ;
     private Button ajout ;
     private EditText code;
+    private String texte;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -53,58 +60,63 @@ public class Formation extends AppCompatActivity {
 
     }
     private View.OnClickListener ajoutListener = new View.OnClickListener() {
+
+
         @Override
         public void onClick(View v) {
-            File myFile = new File(Environment.getExternalStorageDirectory() +
-                    File.separator + "appli_test","idFormation.txt"); //on déclare notre futur fichier
-
-            File myDir = new File(Environment.getExternalStorageDirectory() +
-                    File.separator + "appli_test"); //pour créer le repertoire dans lequel on va mettre notre fichier
-            Boolean success=true;
+            Toast.makeText(
+                    getApplicationContext(),
+                    "je clique sur le bouton", Toast.LENGTH_SHORT
+            ).show();
 
 
-                String data= String.valueOf(code.getText())+";";
+            // ecriture sur le fichier de sauvegarde
 
-                FileOutputStream output = null; //le true est pour écrire en fin de fichier, et non l'écraser
-                try {
-                    output = new FileOutputStream(myFile,true);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    output.write(data.getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            String FILENAME = "file";
+            String content = String.valueOf(code.getText())+";";
+
+            FileOutputStream fos = null;
             try {
-                output.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            FileInputStream in = null;
-            try {
-                in = new FileInputStream(myFile);
-
+                fos = openFileOutput(FILENAME, Context.MODE_APPEND);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            int octet;
-            String message="";
             try {
-                while ((octet = in.read()) != -1) {
-                    message = message +octet;
-                }
+                fos.write(content.getBytes());
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (in != null)
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+            try {
+                fos.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+               }
+            FileInputStream fos2 = null;
+            try {
+                 fos2 =  openFileInput(FILENAME);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            String temp="";
+            int c;
+            try {
+                while( (c = fos2.read()) != -1){
+                    temp = temp + Character.toString((char)c);
                 }
-
-
+                //et.setText(temp);
+                Toast.makeText(getBaseContext(),"Lecture fichier"+"  "+temp,
+                        Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos2.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     };
 

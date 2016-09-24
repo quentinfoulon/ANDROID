@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
     private  Statement statement ;
@@ -38,11 +39,18 @@ public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
         try {
             Class.forName("org.postgresql.Driver");
             System.out.println("Driver O.K.");
-            String url = "jdbc:postgresql://dlx-server.com:5432/foulon"; // IP d'exemple
-            DriverManager.setLoginTimeout(10);
+            String url = "jdbc:postgresql://91.121.178.210:5432/educomedia"//+"ssl=true"+
+                   // "sslfactory=org.postgresql.ssl.NonValidatingFactory"
+                    ; // IP d'exemple
+            Properties props = new Properties();
+            props.setProperty("user","foulon");
+            props.setProperty("password","foulon59551");
+            props.setProperty("ssl","false");
+            DriverManager.setLoginTimeout(1);
             try {
 
-                conn = DriverManager.getConnection(url, "foulon", "foulon59551");
+                //conn = DriverManager.getConnection(url, "foulon", "foulon59551");
+                 conn = DriverManager.getConnection(url, props);
                 System.out.println("connexion O.K.");
             }
             catch(SQLException i){
