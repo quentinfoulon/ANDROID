@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:collapseColumns="1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#C4C4C4"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView7"
+            android:text="Application réalisé par les Petits debrouillards Des hauts de France :"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:allowUndo="false"
+            android:textStyle="normal|bold"
+            android:typeface="serif"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:clickable="true"
+            android:src="@drawable/logodeb"
+            android:layout_weight="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Développé par Quentin foulon:"
+            android:id="@+id/textView8"
+            android:textStyle="normal"
+            android:textAlignment="center"
+            android:typeface="serif"
+            android:layout_weight="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="flnq.fr"
+            android:id="@+id/textView9"
+            android:textAlignment="center"
+            android:textStyle="bold|italic"
+            android:typeface="serif"
+            android:layout_weight="3" />
+
+
+    </TableLayout>
+</FrameLayout>
