@@ -76,6 +76,7 @@ public class Formation extends AppCompatActivity {
         code = (EditText) findViewById(R.id.editTextCode);
         ajout.setOnClickListener(ajoutListener);
         zero.setOnClickListener(zeroListener);
+
         affiche();
 
     }
@@ -123,10 +124,10 @@ public class Formation extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(
+           /* Toast.makeText(
                     getApplicationContext(),
                     "je clique sur le bouton", Toast.LENGTH_SHORT
-            ).show();
+            ).show();*/
 
 
             // ecriture sur le fichier de sauvegarde
@@ -159,6 +160,20 @@ public class Formation extends AppCompatActivity {
     };
     protected String  lire() {
         FileInputStream fos2 = null;
+        // permet de créée le fichier si il n'est pas present
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILENAME, Context.MODE_APPEND);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            fos.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //fin de creation
         try {
             fos2 =  openFileInput(FILENAME);
         } catch (FileNotFoundException e) {
@@ -171,8 +186,8 @@ public class Formation extends AppCompatActivity {
                 temp = temp + Character.toString((char)c);
             }
             //et.setText(temp);
-            Toast.makeText(getBaseContext(),"Lecture fichier"+"  "+temp,
-                    Toast.LENGTH_SHORT).show();
+           /* Toast.makeText(getBaseContext(),"Lecture fichier"+"  "+temp,
+                    Toast.LENGTH_SHORT).show();*/
         } catch (IOException e) {
             e.printStackTrace();
         }

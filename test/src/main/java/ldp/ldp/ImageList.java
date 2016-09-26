@@ -3,7 +3,6 @@ package ldp.ldp;
 /**
  * Created by quentin on 27/06/2016.
  */
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -17,14 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.logging.Handler;
-
-
 public class ImageList extends AppCompatActivity {
     private ExpandListAdapter ExpAdapter;
     private ArrayList<Group> ExpListItems;
     private ExpandableListView ExpandList;
-    private  Handler handler;
     private Toolbar toolbar ;
 
 
@@ -34,7 +29,6 @@ public class ImageList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagelist);
-        // create a handler to update the UI
 
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         Intent intent = getIntent();
@@ -55,53 +49,17 @@ public class ImageList extends AppCompatActivity {
         });
         ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
 
-
-
-        /*handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg){
-
-            }
-        };
-        Thread background = new Thread(new Runnable(){
-            Bundle messageBundle = new Bundle();
-            Message myMessage;
-            public void run(){
-                try {
-                    Thread.sleep(1000);
-                    myMessage=handler.();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        });*/
-
-        // probleme de temps d'execution au niveau du clic sur
         ExpListItems = SetStandardGroups();
         ExpAdapter = new ExpandListAdapter(ImageList.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
         final TextView textview =(TextView) findViewById(R.id.country_name);
         final ImageView imageView =(ImageView) findViewById(R.id.flag);
-        ExpandList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                          " veuillez patienter:",
-
-                        Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
 
 
 
 
 
-       ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
@@ -123,13 +81,19 @@ public class ImageList extends AppCompatActivity {
 
     public ArrayList<Group> SetStandardGroups() {
 
+        String group_names[] = { "outils","communication","modulothèque","autre" };
+
+        String images_name[] = { " "};
+
+        int Images[] = {  };
+
         ArrayList<Group> list = new ArrayList<Group>();
 
         ArrayList<Child> ch_list;
         ch_list = new ArrayList<Child>();
-    // ajout des info pour la partie com
+        // ajout des info pour la partie com
         Group gru = new Group();
-        gru.setName("Communication");
+        gru.setName("Commucnication");
         Child ch = new Child();ch.setName("Affiche café des sciences petits deb");ch.setImage(R.drawable.affiche_cafe_des_sciences_petits_debrouillards);ch_list.add(ch);
         Child ch2 = new Child();ch2.setName("l'air");ch2.setImage(R.drawable.air);ch_list.add(ch2);
         Child ch3 = new Child();ch3.setName("l'eau");ch3.setImage(R.drawable.eau);ch_list.add(ch3);
@@ -146,9 +110,9 @@ public class ImageList extends AppCompatActivity {
         //Child ch12 = new Child();ch.setName("l'eau");ch.setImage(R.drawable.eau);ch_list.add(ch12);
         gru.setItems(ch_list);
         list.add(gru);
-    //fin de l'ajout pour la partie com
+        //fin de l'ajout pour la partie com
         // ajout des info pour la partie modulothèque
-            // partie biodiversité
+        // partie biodiversité
         ArrayList<Child> ch_list2;
         ch_list2 = new ArrayList<Child>();
         Group gru2 = new Group();
@@ -162,7 +126,7 @@ public class ImageList extends AppCompatActivity {
         // fin partie biodiversité
         // partie transition
         Group gru3 = new Group();
-        gru3.setName("Modulothèque Transitions");
+        gru3.setName("Modulothèque Transition / développement durable");
         ArrayList<Child> ch_list3;
         ch_list3 = new ArrayList<Child>();
         Child ch18 = new Child();ch18.setName("Stand Pollution");ch18.setImage(R.drawable.pollution_transition);ch_list3.add(ch18);
@@ -188,12 +152,11 @@ public class ImageList extends AppCompatActivity {
         gru4.setItems(ch_list4);
         list.add(gru4);
         // fin partie santé
-        // partie Solidarité
+        // partie Santé
         Group gru5 = new Group();
         gru5.setName("Modulothèque Solidarité");
         ArrayList<Child> ch_list5;
         ch_list5 = new ArrayList<Child>();
-        //ch_list5.size();
         Child ch26 = new Child();ch26.setName("Stand Les enfants ont des droits");ch26.setImage(R.drawable.solidarite1);ch_list5.add(ch26);
         Child ch27 = new Child();ch27.setName("Stand ce qui devait arriver areva");ch27.setImage(R.drawable.solidarite2);ch_list5.add(ch27);
         Child ch28 = new Child();ch28.setName("Stand Riches et pourtant pauvres");ch28.setImage(R.drawable.solidarite3);ch_list5.add(ch28);
@@ -203,46 +166,14 @@ public class ImageList extends AppCompatActivity {
 
         gru5.setItems(ch_list5);
         list.add(gru5);
-        // fin partie Solidarité
-        // partie Solidarité
-        Group gru6 = new Group();
-        gru6.setName("Modulothèque Sexothèque");
-        ArrayList<Child> ch_list6;
-        ch_list6 = new ArrayList<Child>();
-        Child ch34 = new Child();ch34.setName("Stand Appareil Genital Masculin ");ch34.setImage(R.drawable.sexo1);ch_list6.add(ch34);
-        Child ch35 = new Child();ch35.setName("Stand Appareil Genital Feminin");ch35.setImage(R.drawable.sexo2);ch_list6.add(ch35);
-        Child ch36 = new Child();ch36.setName("Stand Info-Intox Feminin");ch36.setImage(R.drawable.sexo3);ch_list6.add(ch36);
-        Child ch37 = new Child();ch37.setName("Stand Info-Intox Masculin");ch37.setImage(R.drawable.sexo4);ch_list6.add(ch37);
-        Child ch38 = new Child();ch38.setName("Stand Le Parcours du Combatant");ch38.setImage(R.drawable.sexo7);ch_list6.add(ch38);
-        Child ch39 = new Child();ch39.setName("Stand Ovule contre Spermatozoide");ch39.setImage(R.drawable.sexo8);ch_list6.add(ch39);
-        Child ch40 = new Child();ch40.setName("Stand Historique de l'Homosexualité");ch40.setImage(R.drawable.sexo6);ch_list6.add(ch40);
-        Child ch41 = new Child();ch41.setName("Stand Les droits des femmes dans le temps");ch41.setImage(R.drawable.sexo5);ch_list6.add(ch41);
-        gru6.setItems(ch_list6);
-        list.add(gru6);
-        // fin partie Solidarité
-        // partie les architecte du vivant
-        Group gru7 = new Group();
-        gru7.setName("Modulothèque Architecte du Vivant");
-        ArrayList<Child> ch_list7;
-        ch_list7 = new ArrayList<Child>();
-        Child ch42 = new Child();ch42.setName("Stand Corps sous controle");ch42.setImage(R.drawable.archi1);ch_list7.add(ch42);
-        Child ch43 = new Child();ch43.setName("Stand Les cellules ,quelle peche");ch43.setImage(R.drawable.archi2);ch_list7.add(ch43);
-        Child ch44 = new Child();ch44.setName("Stand Global");ch44.setImage(R.drawable.archi3);ch_list7.add(ch44);
-        Child ch45 = new Child();ch45.setName("Stand La vie c'est quoi?");ch45.setImage(R.drawable.archi4);ch_list7.add(ch45);
-        Child ch46 = new Child();ch46.setName("Stand La vie des cellules");ch46.setImage(R.drawable.archi5);ch_list7.add(ch46);
-
-        gru7.setItems(ch_list7);
-        list.add(gru7);
-        // fin partie Solidarité
+        // fin partie santé
 
 
        /* int size = 4;
         int j = 0;
-
         for (String group_name : group_names) {
             Group gru = new Group();
             gru.setName(group_name);
-
             ch_list = new ArrayList<Child>();
             for (; j < size; j++) {
                 Child ch = new Child();
@@ -252,18 +183,17 @@ public class ImageList extends AppCompatActivity {
             }
             gru.setItems(ch_list);
             list.add(gru);
-
             size = size + 4;
         }*/
         // ajout d'image dans la partie images , utiliser des goupes :
-            // Group gru = new Group();
-            // gru.setName(group_name);
+        // Group gru = new Group();
+        // gru.setName(group_name);
         // utiliser les childs :
-            // Child ch = new Child();
-            // ch.setName(images_name[j]);
-            // ch.setImage(Images[j]);
+        // Child ch = new Child();
+        // ch.setName(images_name[j]);
+        // ch.setImage(Images[j]);
         // ajout des childs dans les group approprié pour cela ajouté les child dans une list pouis ajouté cette list au group
-            // gru.setItems(ch_list);
+        // gru.setItems(ch_list);
 
         return list;
     }

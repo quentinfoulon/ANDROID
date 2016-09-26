@@ -45,6 +45,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
+
         final Child child = (Child) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -56,12 +57,21 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         tv.setText(child.getName().toString());
         iv.setImageResource(child.getImage());
         iv.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 System.out.println("test de click "+child.getName().toString());
                 image=iv.getDrawable();
                 nom=child.getName().toString();
-
+                //click=Boolean.TRUE;
+                // Intent intent2 = new Intent(, InternetPage.class);
+                //intent2.putExtra("titre",String.valueOf(textview.getText()));
+                //intent2.putExtra("image", (CharSequence) imageView.getDrawable());
+                //ImageList imagelist =new ImageList();
+                //imagelist.changePage(child.getName().toString());
+                //changePage();
+                //iv.setMaxHeight(match_parent);
                 //iv.setMaxHeight(ViewGroup.LayoutParams.MATCH_PARENT);
                 //iv.setMaxWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 if(click==Boolean.FALSE) {
@@ -73,6 +83,9 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                     iv.setLayoutParams(new RelativeLayout.LayoutParams(250, 150));
                     click=Boolean.FALSE;
                 }
+
+
+
             }
         });
 
@@ -103,16 +116,14 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        //System.out.println("test de click 2");
         Group group = (Group) getGroup(groupPosition);
         if (convertView == null) {
-            System.out.println("test de click 3");
-            //LayoutInflater inf = (LayoutInflater) context
-                    //.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            //convertView = inf.inflate(R.layout.group_item, null);
-            //SystemClock.sleep(1000);
+            LayoutInflater inf = (LayoutInflater) context
+                    .getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            convertView = inf.inflate(R.layout.group_item, null);
         }
-
+        TextView tv = (TextView) convertView.findViewById(R.id.group_name);
+        tv.setText(group.getName());
         return convertView;
     }
 
@@ -125,6 +136,14 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+    public Drawable getimage() {
+        return image;
+    }
+    public boolean onclick() {
+        return true;
+    }
+    public String getnom() {
+        return nom;
+    }
 
 }
-
