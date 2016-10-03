@@ -1,5 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black">
@@ -47,19 +46,21 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="EDUCOMEDIA"
+                android:text=" EDUCMEDIA\nEDUCOCODE"
                 android:id="@+id/media"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
                 android:layout_margin="10dp"
                 android:focusable="false"
-                android:focusableInTouchMode="false" />
+                android:focusableInTouchMode="false"
+                android:singleLine="false"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="EDUCO-CODE"
-                android:id="@+id/code"
+                android:text="FORMATION"
+                android:id="@+id/formation"
                 android:layout_weight="1"
                 android:background="@android:color/holo_orange_light"
                 android:layout_margin="10dp"

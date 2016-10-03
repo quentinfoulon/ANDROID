@@ -101,6 +101,9 @@ public class Listecode extends AppCompatActivity {
             list.add("quiz de l'info");
             list.add("quiz des logos");
             list.add("quiz des Stéréotypes");
+            list.add("convertiseur");
+            list.add("code cesar");
+            list.add("code vigenere");
             //list.add("site Internet");
             final ListView listview = (ListView) findViewById(R.id.listView);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -129,9 +132,17 @@ public class Listecode extends AppCompatActivity {
                         intent2.putExtra("theme", "media");
                         startActivity(intent2);
                     }
-                    else if (item.equals("site Internet")) {
-                        Intent intent2 = new Intent(Listecode.this, InternetPage2.class);
-                        intent2.putExtra("nom", "media");
+                    else if (item.equals("convertiseur")) {
+                        Intent intent2 = new Intent(Listecode.this, Change.class);
+                        intent2.putExtra("theme", "code");
+                        startActivity(intent2);
+                    } else if (item.equals("code cesar")) {
+                        Intent intent2 = new Intent(Listecode.this, CryptageCesar.class);
+                        intent2.putExtra("theme", "code");
+                        startActivity(intent2);
+                    } else if (item.equals("code vigenere")) {
+                        Intent intent2 = new Intent(Listecode.this, CryptageVigenere.class);
+                        intent2.putExtra("theme", "code");
                         startActivity(intent2);
                     }
 

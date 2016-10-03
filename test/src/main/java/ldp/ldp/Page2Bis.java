@@ -56,6 +56,17 @@ public class Page2Bis extends AppCompatActivity {
         image.setOnClickListener(imageListener);
         lien.setOnClickListener(lienListener);
         extra.setOnClickListener(extraListener);
+        if (isOnline())
+        {
+            // Faire quelque chose si le périphérique est connecté
+
+        }
+        else
+        {
+            // Faire quelque chose s'il n'est pas connecté
+        }
+        Boolean test;
+        test=Boolean.FALSE;
     }
     private View.OnClickListener videoListener = new View.OnClickListener() {
         @Override
@@ -118,9 +129,27 @@ public class Page2Bis extends AppCompatActivity {
 
             //setContentView(page2);
             Intent intent = new Intent(Page2Bis.this, Formation.class);
-            intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
-            intent.putExtra("theme","formation");
-            startActivity(intent);
+            boolean ok=Boolean.TRUE;
+            if (isOnline()) {
+
+
+                try {
+                    System.out.println("test: " + intent2.getStringArrayListExtra("value").get(0));
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),
+                            " Probleme de connection a la Base de données.",
+                            Toast.LENGTH_SHORT).show();
+                    ok=Boolean.FALSE;
+                }
+                intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
+                intent.putExtra("theme","formation");
+                if(ok)
+                    startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(),
+                        " Pas de connexion a internet",
+                        Toast.LENGTH_SHORT).show();
+            };
 
 
         }
