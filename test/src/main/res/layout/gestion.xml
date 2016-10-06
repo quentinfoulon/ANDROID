@@ -31,8 +31,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="VIDEO"
-                android:id="@+id/video"
+                android:text="Planning"
+                android:id="@+id/planning"
                 android:layout_weight="1"
                 android:background="#40A497"
                 android:layout_margin="10dp"
@@ -42,8 +42,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="IMAGE"
-                android:id="@+id/image"
+                android:text="Dispo"
+                android:id="@+id/dispo"
                 android:layout_weight="1"
                 android:background="#F6AE51"
                 android:layout_margin="10dp"
@@ -61,8 +61,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="FORMATION"
-                android:id="@+id/lien"
+                android:text="Bilan"
+                android:id="@+id/bilan"
                 android:layout_weight="1"
                 android:background="#ED86B6"
                 android:layout_margin="10dp"
@@ -72,7 +72,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Gestion"
+                android:text="A propos"
                 android:id="@+id/extra"
                 android:layout_weight="1"
                 android:background="@android:color/holo_green_light"

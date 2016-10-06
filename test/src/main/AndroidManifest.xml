@@ -97,6 +97,10 @@
 
             >
         </activity>
+        <activity android:name=".Gestion"
+
+            >
+        </activity>
         <activity   android:name=".Formation"
             android:screenOrientation="portrait"
             >
