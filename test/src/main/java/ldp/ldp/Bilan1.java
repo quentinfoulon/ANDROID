@@ -21,6 +21,7 @@ public class Bilan1 extends AppCompatActivity {
     private DatePicker date;
     private EditText adresse;
     private EditText titre;
+    private EditText participant;
     private Button suivant;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class Bilan1 extends AppCompatActivity {
         date = (DatePicker) findViewById(R.id.datePicker);
         adresse=(EditText) findViewById(R.id.adresse);
         titre=(EditText) findViewById(R.id.titre);
+        participant=(EditText) findViewById(R.id.participant);
         suivant=(Button) findViewById(R.id.suivant);
         suivant.setOnClickListener(suivantListener);
 
@@ -70,7 +72,10 @@ public class Bilan1 extends AppCompatActivity {
             intent.putExtra("mois",String.valueOf(date.getMonth()));
             intent.putExtra("annee",String.valueOf(date.getYear()));
             intent.putExtra("adresse",String.valueOf(adresse.getText()));
+            intent.putExtra("date",String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear()));
+            intent.putExtra("participant",String.valueOf(participant.getText()));
             intent.putExtra("theme","bilan");
+            System.out.println("date :"+String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear()));
             startActivity(intent);
 
 

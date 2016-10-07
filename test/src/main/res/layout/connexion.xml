@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fbe800"
+    android:background="@android:color/holo_orange_light"
     android:clickable="false">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -32,7 +32,8 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:fadingEdge="horizontal"
-        android:layout_marginBottom="20dip"/>
+        android:layout_marginBottom="20dip"
+        android:background="@android:color/white" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -47,7 +48,8 @@
         android:password="true"
         android:singleLine="true"
         android:fadingEdge="horizontal"
-        />
+        android:autoText="false"
+        android:background="@android:color/white" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
