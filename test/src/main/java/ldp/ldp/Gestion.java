@@ -95,7 +95,15 @@ public class Gestion extends AppCompatActivity {
     private View.OnClickListener bilanListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent intent2 = getIntent();
+            Intent intent = new Intent(Gestion.this, Bilan1.class);
+            intent.putExtra("value", intent2.getStringExtra("value"));
+            intent.putExtra("poste", intent2.getStringExtra("poste"));
+            intent.putExtra("username", intent2.getStringExtra("username"));
+            intent.putExtra("nom", intent2.getStringExtra("nom"));
+            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("theme","bilan");
+            startActivity(intent);
 
         }
     };

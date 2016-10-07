@@ -101,6 +101,14 @@
 
             >
         </activity>
+        <activity android:name=".Bilan1"
+
+            >
+        </activity>
+        <activity android:name=".Bilan2"
+
+            >
+        </activity>
         <activity   android:name=".Formation"
             android:screenOrientation="portrait"
             >

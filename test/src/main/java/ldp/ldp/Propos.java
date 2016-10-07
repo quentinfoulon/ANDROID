@@ -46,6 +46,7 @@ public class Propos extends AppCompatActivity {
     private InputStream is = null;
     private Indentificateur2 db;
     private Boolean fin;
+    private Intent intent2;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -53,7 +54,7 @@ public class Propos extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        intent2 = new Intent(Propos.this, Gestion.class);
 
         //setContentView(R.layout.propos);
         setContentView(R.layout.connexion);
@@ -203,6 +204,10 @@ public class Propos extends AppCompatActivity {
                         resultat2=true;
                     else
                         resultat2=false;
+                    intent2.putExtra("poste", json_data.getString("poste"));
+                    intent2.putExtra("username", json_data.getString("username"));
+                    intent2.putExtra("nom", json_data.getString("nom"));
+                    intent2.putExtra("prenom", json_data.getString("prenom"));
                     result=json_data.getString("poste")+";"+json_data.getString("username")+";"+json_data.getString("password")+";"+json_data.getString("nom")+";"+json_data.getString("prenom");
                 }
             }
@@ -225,14 +230,18 @@ public class Propos extends AppCompatActivity {
          *    display it or send to mainactivity
          *    close any dialogs/ProgressBars/etc...
         */
-            Intent intent2;
+
             if (a) {
-                intent2 = new Intent(Propos.this, Gestion.class);
+
             intent2.putExtra("value", resultat);
-            startActivity(intent2);}else{Toast.makeText(
+            startActivity(intent2);
+            }
+            else{
+                Toast.makeText(
                     getApplicationContext(),
                     "mot de passe ou identifiant incorrect", Toast.LENGTH_SHORT
-            ).show();}
+                ).show();
+            }
 
         }
         @Override
