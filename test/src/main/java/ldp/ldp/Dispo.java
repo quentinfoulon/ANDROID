@@ -38,7 +38,7 @@ import java.util.Date;
 /**
  * Created by quentin on 07/10/2016.
  */
-public class Bilan2 extends AppCompatActivity {
+public class Dispo extends AppCompatActivity {
     private Toolbar toolbar ;
     private EditText texte;
     private Button poster;
@@ -48,9 +48,9 @@ public class Bilan2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.bilan2);
+        setContentView(R.layout.dispo);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setTitle("Bilan");
+        toolbar.setTitle("Dispo");
         //definir notre toolbar en tant qu'actionBar
         setSupportActionBar(toolbar);
         //afficher le bouton retour
@@ -69,7 +69,7 @@ public class Bilan2 extends AppCompatActivity {
 
 
         texte=(EditText) findViewById(R.id.textebilan);
-        poster=(Button) findViewById(R.id.poster);
+        poster=(Button) findViewById(R.id.postdispo);
         poster.setOnClickListener(suivantListener);
 
     }
@@ -77,7 +77,7 @@ public class Bilan2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent2 = getIntent();
-            Intent intent = new Intent(Bilan2.this, Gestion.class);
+            Intent intent = new Intent(Dispo.this, Gestion.class);
             intent.putExtra("value", intent2.getStringExtra("value"));
             intent.putExtra("poste", intent2.getStringExtra("poste"));
             intent.putExtra("username", intent2.getStringExtra("username"));

@@ -76,6 +76,7 @@ public class Bilan1 extends AppCompatActivity {
             intent.putExtra("participant",String.valueOf(participant.getText()));
             intent.putExtra("theme","bilan");
             System.out.println("date :"+String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear()));
+            finish();
             startActivity(intent);
 
 

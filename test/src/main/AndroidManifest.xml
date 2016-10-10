@@ -109,10 +109,15 @@
 
             >
         </activity>
+        <activity   android:name=".Dispo"
+
+            >
+        </activity>
         <activity   android:name=".Formation"
             android:screenOrientation="portrait"
             >
         </activity>
+
 
 
         <meta-data
