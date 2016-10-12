@@ -43,8 +43,8 @@ public class DBConnexion extends AsyncTask<Void, Void, Boolean> {
                    // "sslfactory=org.postgresql.ssl.NonValidatingFactory"
                     ; // IP d'exemple
             Properties props = new Properties();
-            props.setProperty("user","foulon");
-            props.setProperty("password","foulon59551");
+            props.setProperty("user","lpd");
+            props.setProperty("password","lpd");
             props.setProperty("ssl","false");
             DriverManager.setLoginTimeout(1);
             try {

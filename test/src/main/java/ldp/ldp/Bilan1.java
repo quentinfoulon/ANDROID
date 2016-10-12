@@ -69,7 +69,7 @@ public class Bilan1 extends AppCompatActivity {
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
             intent.putExtra("titre",String.valueOf(titre.getText()));
             intent.putExtra("jour",String.valueOf(date.getDayOfMonth()));
-            intent.putExtra("mois",String.valueOf(date.getMonth()));
+            intent.putExtra("mois",String.valueOf(date.getMonth()+1));
             intent.putExtra("annee",String.valueOf(date.getYear()));
             intent.putExtra("adresse",String.valueOf(adresse.getText()));
             intent.putExtra("date",String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear()));

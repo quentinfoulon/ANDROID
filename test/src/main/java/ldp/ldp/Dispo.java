@@ -13,8 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -32,6 +34,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,8 +43,9 @@ import java.util.Date;
  */
 public class Dispo extends AppCompatActivity {
     private Toolbar toolbar ;
-    private EditText texte;
     private Button poster;
+    private CalendarView date;
+    private TextView texte;
     private Indentificateur2 db;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,31 +71,33 @@ public class Dispo extends AppCompatActivity {
             }
         });
 
-
-        texte=(EditText) findViewById(R.id.textebilan);
+        date = (CalendarView) findViewById(R.id.calendarView);
         poster=(Button) findViewById(R.id.postdispo);
+        texte=(TextView) findViewById(R.id.commentaireDispo);
         poster.setOnClickListener(suivantListener);
+        //date.updateDate(2016,9,1);
+        //date.date
+
 
     }
     private View.OnClickListener suivantListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent2 = getIntent();
-            Intent intent = new Intent(Dispo.this, Gestion.class);
-            intent.putExtra("value", intent2.getStringExtra("value"));
-            intent.putExtra("poste", intent2.getStringExtra("poste"));
-            intent.putExtra("username", intent2.getStringExtra("username"));
-            intent.putExtra("nom", intent2.getStringExtra("nom"));
-            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
-            intent.putExtra("theme","gestion");
-            finish();
-            startActivity(intent);
+
             if (isOnline())
             {
                 // Faire quelque chose si le périphérique est connecté
-                String date=null;
-                date=""+intent2.getStringExtra("jour")+"-"+intent2.getStringExtra("mois")+"-"+intent2.getStringExtra("annee");
-                db = new Indentificateur2(); db.execute(String.valueOf(texte.getText()),intent2.getStringExtra("username"),intent2.getStringExtra("titre"),intent2.getStringExtra("adresse"),date,intent2.getStringExtra("participant"));
+                //String dateS=null;
+                Intent intent2 = getIntent();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String selectedDate = sdf.format(new Date(date.getDate()));
+                System.out.println("date :"+selectedDate);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    date.setDateTextAppearance(Color.BLUE);
+
+                }
+                //dateS=String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear());
+                //db = new Indentificateur2(); db.execute(intent2.getStringExtra("username"),String.valueOf(texte.getText()),selectedDate);
                 //db.onPostExecute(result);
 
                 //System.out.println("test"+result);
@@ -122,21 +128,19 @@ public class Dispo extends AppCompatActivity {
             //------------------------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------
-            String s = params[1];
+            String s = params[0];
             String result = "";
 // L'année à envoyer
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("username",s));
-            nameValuePairs.add(new BasicNameValuePair("texte",params[0]));
-            nameValuePairs.add(new BasicNameValuePair("titre",params[2]));
-            nameValuePairs.add(new BasicNameValuePair("adresse",params[3]));
-            nameValuePairs.add(new BasicNameValuePair("date",params[4]));
-            nameValuePairs.add(new BasicNameValuePair("participants",params[5]));
+            nameValuePairs.add(new BasicNameValuePair("texte",params[1]));
+            nameValuePairs.add(new BasicNameValuePair("date",params[2]));
+
 
 // Envoi de la requête avec HTTPPost
             try{
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost httppost = new HttpPost("http://flnq.fr/pdf/bilan.php");
+                HttpPost httppost = new HttpPost("http://flnq.fr/pdf/dispopost.php");
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();
@@ -166,7 +170,16 @@ public class Dispo extends AppCompatActivity {
          *    display it or send to mainactivity
          *    close any dialogs/ProgressBars/etc...
         */
-
+            Intent intent2 = getIntent();
+            Intent intent = new Intent(Dispo.this, Gestion.class);
+            intent.putExtra("value", intent2.getStringExtra("value"));
+            intent.putExtra("poste", intent2.getStringExtra("poste"));
+            intent.putExtra("username", intent2.getStringExtra("username"));
+            intent.putExtra("nom", intent2.getStringExtra("nom"));
+            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("theme","gestion");
+            finish();
+            startActivity(intent);
 
         }
         @Override
