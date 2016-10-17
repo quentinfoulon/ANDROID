@@ -10,7 +10,7 @@
         android:label="Les Petits Debrouillards" android:supportsRtl="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:hardwareAccelerated="false">
         <activity android:name=".Accueil"
-            android:screenOrientation="portrait"
+
             >
 
             <intent-filter>
@@ -37,8 +37,7 @@
             android:screenOrientation="portrait"
             >
         </activity>
-        <activity android:hardwareAccelerated="true" android:name=".MainActivity"
-
+        <activity  android:name=".MainActivity"
             >
         </activity>
         <activity android:name=".page2"
@@ -70,15 +69,15 @@
         >
          </activity>
         <activity android:name=".QuizInfo"
-            android:screenOrientation="portrait"
+
         >
         </activity>
         <activity android:name=".QuizStereo"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity android:name=".QuizLogo"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity android:name=".InternetPage2"
@@ -113,8 +112,12 @@
 
             >
         </activity>
+        <activity   android:name=".Historique"
+
+            >
+        </activity>
         <activity   android:name=".Formation"
-            android:screenOrientation="portrait"
+
             >
         </activity>
 

@@ -1,1 +1,1 @@
-include ':app', ':test', ':postgresql-9.4.1208.jre6', ':pongsimplifié'
+include ':app', ':test', ':postgresql-9.4.1208.jre6'

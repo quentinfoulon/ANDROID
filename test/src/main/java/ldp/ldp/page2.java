@@ -23,6 +23,7 @@ public class page2 extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //super.onPause();
 
 
         setContentView(R.layout.page2);

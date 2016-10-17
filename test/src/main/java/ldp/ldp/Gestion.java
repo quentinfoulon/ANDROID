@@ -138,11 +138,12 @@ public class Gestion extends AppCompatActivity {
         public void onClick(View v) {
 
             Intent intent2 = getIntent();
-
-            //setContentView(page2);
-            Intent intent = new Intent(Gestion.this, Propos.class);
-            intent.putStringArrayListExtra("value", intent2.getStringArrayListExtra("value"));
-            intent.putExtra("theme","propos");
+            Intent intent = new Intent(Gestion.this, Historique.class);
+            intent.putExtra("value", intent2.getStringExtra("value"));
+            intent.putExtra("poste", intent2.getStringExtra("poste"));
+            intent.putExtra("username", intent2.getStringExtra("username"));
+            intent.putExtra("nom", intent2.getStringExtra("nom"));
+            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
             startActivity(intent);
 
 

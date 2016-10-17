@@ -47,13 +47,14 @@ public class Accueil extends AppCompatActivity {
 
 
     }
+
     class MyTimerTask extends TimerTask {
         public void run() {
             // ERROR
             //hTextView.setText("appuyé sur l'image");
             //hTextView.setText("Impossible");
             myTimer.cancel();
-            Intent intent2 = new Intent(Accueil.this, MainActivity.class);
+            Intent intent2 = new Intent(Accueil.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);;;
             startActivity(intent2);
             finish();
             // how update TextView in link below
@@ -67,7 +68,7 @@ public class Accueil extends AppCompatActivity {
         public void onClick(View v) {
             //setContentView(page2);
             myTimer.cancel();
-            Intent intent2 = new Intent(Accueil.this, MainActivity.class);
+            Intent intent2 = new Intent(Accueil.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);;;
             startActivity(intent2);
             finish();
         }

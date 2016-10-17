@@ -1,10 +1,7 @@
 package ldp.ldp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,10 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,35 +34,39 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Created by quentin on 07/10/2016.
+ * Created by quentin on 14/10/2016.
  */
-public class Dispo extends AppCompatActivity {
-    private Toolbar toolbar ;
-    private Button poster;
-    private CalendarView date;
-    private TextView texte;
+public class Historique extends AppCompatActivity {
+    private Toolbar toolbar;
     private Indentificateur2 db;
-    @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //intent2 = new Intent(Propos.this, Gestion.class);
 
-
-        setContentView(R.layout.dispo);
+        //setContentView(R.layout.propos);
+        setContentView(R.layout.historique);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setTitle("Dispo");
+        Intent intent = getIntent();
+        toolbar.setTitle("Historique");
+
+
         //definir notre toolbar en tant qu'actionBar
         setSupportActionBar(toolbar);
         //afficher le bouton retour
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#939292"));
         }
+
         //action du retour a la page .
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,55 +75,34 @@ public class Dispo extends AppCompatActivity {
             }
         });
 
-        date = (CalendarView) findViewById(R.id.calendarView);
-        poster=(Button) findViewById(R.id.postdispo);
-        texte=(TextView) findViewById(R.id.commentaireDispo);
-        poster.setOnClickListener(suivantListener);
-        //date.updateDate(2016,9,1);
-        //date.date
+        //ajoutTextView("test");
+
+            // Faire quelque chose si le périphérique est connecté
+            db = new Indentificateur2(); db.execute(intent.getStringExtra("username"));
+            //db.onPostExecute(result);
 
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
     }
-    private View.OnClickListener suivantListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+    private void listeViewRemplir(ArrayList<Map<String, String>> test){
+       System.out.println( test.get(0));
+        final ListView listview = (ListView) findViewById(R.id.listViewHisto);
+        final String[] fromMapKey = new String[] {"text1", "text2"};
+        final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
+        ListAdapter adapter =new SimpleAdapter(this, test,
+                android.R.layout.simple_list_item_2,
+                fromMapKey, toLayoutId);
+        listview.setAdapter(adapter);
 
-            if (isOnline())
-            {
-                // Faire quelque chose si le périphérique est connecté
-                //String dateS=null;
-                Intent intent2 = getIntent();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                String selectedDate = sdf.format(new Date(date.getDate()));
-                System.out.println("date :"+selectedDate);
-
-                //dateS=String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear());
-                //db = new Indentificateur2(); db.execute(intent2.getStringExtra("username"),String.valueOf(texte.getText()),selectedDate);
-                //db.onPostExecute(result);
-
-                //System.out.println("test"+result);
-            }
-            else
-            {
-                // Faire quelque chose s'il n'est pas connecté
-            }
-
-
-
-        }
-    };
-    public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private class Indentificateur2 extends AsyncTask<String, Void, Boolean> {
         private InputStream is = null;
         public String resultat=null;
         public boolean resultat2;
-        private Intent intent3 = getIntent();
+        private ArrayList<Map<String, String>> list;
+
         @Override
         protected Boolean doInBackground(String... params) {
             //------------------------------------------------------------------------------------------------------
@@ -127,17 +110,16 @@ public class Dispo extends AppCompatActivity {
             //------------------------------------------------------------------------------------------------------
             String s = params[0];
             String result = "";
+            list = new ArrayList<Map<String, String>>();
+
 // L'année à envoyer
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("username",s));
-            nameValuePairs.add(new BasicNameValuePair("texte",params[1]));
-            nameValuePairs.add(new BasicNameValuePair("date",params[2]));
-
 
 // Envoi de la requête avec HTTPPost
             try{
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost httppost = new HttpPost("http://flnq.fr/pdf/dispopost.php");
+                HttpPost httppost = new HttpPost("http://flnq.fr/pdf/histo.php");
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();
@@ -148,10 +130,49 @@ public class Dispo extends AppCompatActivity {
             }
 
 //Conversion de la réponse en chaine
+            try{
 
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                is.close();
+
+                result=sb.toString();
+                //System.out.println(result);
+            }catch(Exception e){
+                Log.e("log_tag", "Error converting result "+e.toString());
+
+            }
 
 // Parsing des données JSON
+            try{
+                //System.out.println("test4");
+                JSONArray jArray = new JSONArray(result);
+                //System.out.println("test3");
+                for(int i=0;i<jArray.length();i++){
+                    //System.out.println("test1");
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    //System.out.println("test2");
+                    //list.add(json_data.getString("titre"));
+                    final Map<String, String> listItemMap = new HashMap<String, String>();
+                    listItemMap.put("text1",json_data.getString("titre") );
+                    if(json_data.getString("commentaire").equals("null")||json_data.getString("commentaire").equals(null))
+                        listItemMap.put("text2","le "+json_data.getString("date")+" à "+json_data.getString("lieu") );
+                    else
+                        listItemMap.put("text2","le "+json_data.getString("date")+" à "+json_data.getString("lieu")+"\n"+"Commentaire :\n"+json_data.getString("commentaire") );
+                    list.add(Collections.unmodifiableMap(listItemMap));
 
+
+                    //result=json_data.getString("date")+";"+json_data.getString("username")+";"+json_data.getString("password")+";"+json_data.getString("nom")+";"+json_data.getString("prenom");
+                }
+            }
+            catch(JSONException e){
+                Log.e("log_tag", "Error parsing data "+e.toString());
+                result=null;
+            }
 
             //------------------------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------
@@ -167,17 +188,7 @@ public class Dispo extends AppCompatActivity {
          *    display it or send to mainactivity
          *    close any dialogs/ProgressBars/etc...
         */
-            Intent intent2 = getIntent();
-            Intent intent = new Intent(Dispo.this, Gestion.class);
-            intent.putExtra("value", intent2.getStringExtra("value"));
-            intent.putExtra("poste", intent2.getStringExtra("poste"));
-            intent.putExtra("username", intent2.getStringExtra("username"));
-            intent.putExtra("nom", intent2.getStringExtra("nom"));
-            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
-            intent.putExtra("theme","gestion");
-            finish();
-            startActivity(intent);
-
+            listeViewRemplir(list);
         }
         @Override
         protected void onPreExecute() {

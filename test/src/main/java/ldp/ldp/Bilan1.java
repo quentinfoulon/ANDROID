@@ -55,6 +55,8 @@ public class Bilan1 extends AppCompatActivity {
         participant=(EditText) findViewById(R.id.participant);
         suivant=(Button) findViewById(R.id.suivant);
         suivant.setOnClickListener(suivantListener);
+        date.setDrawingCacheBackgroundColor(Color.RED);
+
 
     }
     private View.OnClickListener suivantListener = new View.OnClickListener() {

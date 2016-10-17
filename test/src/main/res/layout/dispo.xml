@@ -46,16 +46,9 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Disponibilité"
                 android:id="@+id/textView13"
-                android:textAlignment="center"
-                android:layout_marginTop="70px" />
+                android:textAlignment="center" />
 
 
-            DatePicker
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/datePicker2"
-                android:calendarViewShown="true"
-                android:clickable="false" />
 
             <CalendarView
                 android:layout_width="wrap_content"
