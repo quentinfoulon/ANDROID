@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Button fun ;
     public ArrayList al2 ;
     private DBConnexion db2;
-    private Boolean test;
+    private Boolean test=false;
     private  ArrayList al3 ;
     private Indentificateur2 db;
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         {
             // Faire quelque chose si le périphérique est connecté
             //db2 = new DBConnexion(); db2.execute();
-            if(test==null) {
+            if(test==null||test==false) {
                 al3 = new ArrayList();
                 db = new Indentificateur2();
                 db.execute();
@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            // Faire quelque chose s'il n'est pas connecté
+            Toast.makeText(getApplicationContext(),
+                    " Pas de connexion a internet",
+                    Toast.LENGTH_SHORT).show();
         }
         Boolean test;
         test=Boolean.FALSE;
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             if (isOnline()) {
-                Intent intent = new Intent(MainActivity.this, page2.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);//.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);;
+                Intent intent = new Intent(MainActivity.this, page2.class);//.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);;
                 if(test){
                     intent.putStringArrayListExtra("value", al3);
                     //finish();
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             //setContentView(page2);
             Intent intent2 = new Intent(MainActivity.this, Listecode.class);
             intent2.putExtra("theme","media");
-            intent2.putStringArrayListExtra("value", al2);
+            intent2.putStringArrayListExtra("value", al3);
             startActivity(intent2);
         }
     };

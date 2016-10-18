@@ -12,6 +12,9 @@
         <activity android:name=".Accueil"
 
             >
+            <provider
+                android:name="com.tyczj.extendedcalendarview.CalendarProvider"
+                android:authorities="com.tyczj.extendedcalendarview.calendarprovider" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
