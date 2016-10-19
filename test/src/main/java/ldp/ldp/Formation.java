@@ -85,10 +85,7 @@ public class Formation extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(
-                    getApplicationContext(),
-                    "je clique sur le bouton", Toast.LENGTH_SHORT
-            ).show();
+
 
 
             // ecriture sur le fichier de sauvegarde

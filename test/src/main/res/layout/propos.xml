@@ -4,12 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="#fbe800">
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:collapseColumns="1">
+        android:collapseColumns="1"
+        android:nestedScrollingEnabled="true">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
@@ -41,18 +42,28 @@
             android:id="@+id/imageView2"
             android:clickable="true"
             android:src="@drawable/logodeb"
-            android:layout_weight="6" />
+            android:layout_weight="500"
+            android:nestedScrollingEnabled="false" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Développée par Quentin foulon:"
+            android:text="Réalisé par l&apos;equipe des Hauts De France:"
             android:id="@+id/textView8"
             android:textStyle="normal"
             android:textAlignment="center"
             android:typeface="serif"
-            android:layout_weight="3" />
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Quentin Foulon , Nicolas Locquet , Adrien Malhaprez"
+            android:id="@+id/textView16"
+            android:layout_weight="1"
+            android:textAlignment="center" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +74,7 @@
             android:textAlignment="center"
             android:textStyle="bold|italic"
             android:typeface="serif"
-            android:layout_weight="3" />
+            android:layout_weight="1" />
 
 
     </TableLayout>

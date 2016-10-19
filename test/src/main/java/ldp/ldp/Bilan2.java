@@ -83,6 +83,7 @@ public class Bilan2 extends AppCompatActivity {
             intent.putExtra("username", intent2.getStringExtra("username"));
             intent.putExtra("nom", intent2.getStringExtra("nom"));
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
             intent.putExtra("theme","gestion");
             finish();
             startActivity(intent);

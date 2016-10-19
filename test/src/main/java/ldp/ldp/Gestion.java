@@ -91,9 +91,17 @@ public class Gestion extends AppCompatActivity {
     private View.OnClickListener planningListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
-
+            Intent intent2 = getIntent();
+            Intent intent = new Intent(Gestion.this, Planning.class);
+            intent.putExtra("value", intent2.getStringExtra("value"));
+            intent.putExtra("poste", intent2.getStringExtra("poste"));
+            intent.putExtra("username", intent2.getStringExtra("username"));
+            intent.putExtra("nom", intent2.getStringExtra("nom"));
+            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
+            intent.putExtra("theme","Planning");
+            //finish();
+            startActivity(intent);
 
         }
     };
@@ -127,8 +135,9 @@ public class Gestion extends AppCompatActivity {
             intent.putExtra("username", intent2.getStringExtra("username"));
             intent.putExtra("nom", intent2.getStringExtra("nom"));
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
             intent.putExtra("theme","bilan");
-            finish();
+            //finish();
             startActivity(intent);
 
         }
@@ -144,6 +153,7 @@ public class Gestion extends AppCompatActivity {
             intent.putExtra("username", intent2.getStringExtra("username"));
             intent.putExtra("nom", intent2.getStringExtra("nom"));
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
             startActivity(intent);
 
 
@@ -254,8 +264,9 @@ public class Gestion extends AppCompatActivity {
             intent.putExtra("username", intent2.getStringExtra("username"));
             intent.putExtra("nom", intent2.getStringExtra("nom"));
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
             intent.putExtra("theme","dispo");
-            finish();
+            //finish();
             startActivity(intent);
 
 

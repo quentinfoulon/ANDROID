@@ -130,7 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, Formation.class);
                 if(test){
                     intent.putStringArrayListExtra("value", al3);
-                    finish();
+                    //finish();
+                    intent.putExtra("theme","formation");
                     startActivity(intent);}
                 else{Toast.makeText(getApplicationContext(),
                         " Donnée en cours de chargement .",

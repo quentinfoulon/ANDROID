@@ -30,19 +30,28 @@
             android:id="@+id/imagelpd"
             android:clickable="true"
             android:src="@drawable/logodeb"
-            android:layout_weight="1" />
+            android:layout_weight="300" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Développée par Quentin foulon:"
+            android:text="Réalisé par l&apos;equipe des Hauts De France:"
             android:id="@+id/textView8"
             android:textStyle="normal"
             android:textAlignment="center"
             android:typeface="serif"
             android:layout_weight="1"
             android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Quentin Foulon , Nicolas Locquet , Adrien Malhaprez"
+            android:id="@+id/textView17"
+            android:textAlignment="center"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"

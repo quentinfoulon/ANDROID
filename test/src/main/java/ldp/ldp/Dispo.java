@@ -52,13 +52,16 @@ import java.util.TimeZone;
 public class Dispo extends AppCompatActivity {
     private Toolbar toolbar ;
     private Button poster;
+    private Button supprimer;
     private CalendarView date;
     private TextView texte;
     private TextView mois;
     private Indentificateur2 db;
+    private Indentificateur1 db1;
     private Indentificateur3 db2;
     private String dateSelec;
     private Intent intent2;
+    private String username;
     private CompactCalendarView compactCalendarView;
     private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM/yyyy", Locale.FRENCH);
 
@@ -67,6 +70,7 @@ public class Dispo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent2 = getIntent();
+        username=intent2.getStringExtra("username");
         setContentView(R.layout.dispo);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.setTitle("Dispo");
@@ -89,12 +93,14 @@ public class Dispo extends AppCompatActivity {
         //date = (CalendarView) findViewById(R.id.calendarView);
         mois=(TextView) findViewById(R.id.mois);
         poster=(Button) findViewById(R.id.postdispo);
+        supprimer=(Button) findViewById(R.id.supdispo);
         texte=(TextView) findViewById(R.id.commentaireDispo);
         poster.setOnClickListener(suivantListener);
+        supprimer.setOnClickListener(supprimerListener);
         //date.updateDate(2016,9,1);
         //date.date
          compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-        compactCalendarView.setLocale(TimeZone.getTimeZone("CEST"),Locale.FRANCE);
+        compactCalendarView.setLocale(TimeZone.getTimeZone("Europe/Paris"),Locale.FRANCE);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
         //final CompactCalendarView compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         String format = "dd-MM-yyyy ";
@@ -102,18 +108,6 @@ public class Dispo extends AppCompatActivity {
         java.util.Date date = new java.util.Date();
         dateSelec=formater.format( date ) ;
         // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
-        Event ev1 =new Event(Color.GREEN, 1433701251000L, "Some extra data that I want to store.");
-        compactCalendarView.addEvent(ev1);
-
-        // Added event 2 GMT: Sun, 07 Jun 2015 19:10:51 GMT
-        Event ev2 = new Event(Color.GREEN, 1433704251000L);
-        compactCalendarView.addEvent(ev2);
-
-        // Query for events on Sun, 07 Jun 2015 GMT.
-        // Time is not relevant when querying for events, since events are returned by day.
-        // So you can pass in any arbitary DateTime and you will receive all events for that day.
-        List<Event> events = compactCalendarView.getEvents(1433701251000L); // can also take a Date object
-
         // events has size 2 with the 2 events inserted previously
         //Log.d(TAG, "Events: " + events);
         mois.setText(dateFormatForMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
@@ -126,21 +120,13 @@ public class Dispo extends AppCompatActivity {
             @Override
             public void onDayClick(Date dateClicked) {
                 List<Event> events = compactCalendarView.getEvents(dateClicked);
-                Date datenormal=null;
-                //datenormal.after(dateClicked);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 String selectedDate = sdf.format(dateClicked);
-                selectedDate=selectedDate;
-                //System.out.println( "Day was clicked: " + dateClicked + " with events " + events);
-                //System.out.println( "Day was clicked: " + selectedDate + " with events " + events);
-                dateSelec=selectedDate;
-                //dateClicked.after();
-
+                dateSelec=selectedDate;;
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                System.out.println( "Month was scrolled to: " + firstDayOfNewMonth);
                 mois.setText(dateFormatForMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
             }
         });
@@ -153,19 +139,30 @@ public class Dispo extends AppCompatActivity {
 
             if (isOnline())
             {
-                // Faire quelque chose si le périphérique est connecté
-                //String dateS=null;
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+                db = new Indentificateur2(); db.execute(username,String.valueOf(texte.getText()),dateSelec);
+            }
+            else
+            {
+                // Faire quelque chose s'il n'est pas connecté
+            }
+
+
+
+        }
+    };
+    private View.OnClickListener supprimerListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if (isOnline())
+            {
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                //String selectedDate = sdf.format(new Date(date.getDate()));
-                //System.out.println("date :"+dateclicked);
 
+                db1 = new Indentificateur1(); db1.execute(username,dateSelec);
 
-                //dateS=String.valueOf(date.getDayOfMonth())+"-"+String.valueOf(date.getMonth()+1)+"-"+String.valueOf(date.getYear());
-                db = new Indentificateur2(); db.execute(intent2.getStringExtra("username"),String.valueOf(texte.getText()),dateSelec);
-                //db.onPostExecute(result);
-
-                //System.out.println("test"+result);
             }
             else
             {
@@ -183,6 +180,88 @@ public class Dispo extends AppCompatActivity {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
+    private class Indentificateur1 extends AsyncTask<String, Void, Boolean> {
+        private InputStream is = null;
+        public String resultat=null;
+        public boolean resultat2;
+        private Intent intent3 = getIntent();
+        @Override
+        protected Boolean doInBackground(String... params) {
+            //------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------
+            String s = params[0];
+            String result = "";
+// L'année à envoyer
+            ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("username",s));
+            //nameValuePairs.add(new BasicNameValuePair("texte",params[1]));
+            nameValuePairs.add(new BasicNameValuePair("date",params[1]));
+
+
+// Envoi de la requête avec HTTPPost
+            try{
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost("http://flnq.fr/pdf/disposup.php");
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+                is = entity.getContent();
+            }catch(Exception e){
+                Log.e("log_tag", "Error in http connection "+e.toString());
+
+            }
+
+//Conversion de la réponse en chaine
+
+
+// Parsing des données JSON
+
+
+            //------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------
+            resultat=result;
+
+            return resultat2;
+        }
+        @Override
+        protected void onPostExecute(Boolean a) {
+        /*
+         *    do something with data here
+         *    display it or send to mainactivity
+         *    close any dialogs/ProgressBars/etc...
+        */
+            Intent intent2 = getIntent();
+            Intent intent = new Intent(Dispo.this, Gestion.class);
+            intent.putExtra("value", intent2.getStringExtra("value"));
+            intent.putExtra("poste", intent2.getStringExtra("poste"));
+            intent.putExtra("username", intent2.getStringExtra("username"));
+            intent.putExtra("nom", intent2.getStringExtra("nom"));
+            intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
+            intent.putExtra("theme","gestion");
+            finish();
+            startActivity(intent);
+
+        }
+        @Override
+        protected void onPreExecute() {
+        /*
+         *    do things before doInBackground() code runs
+         *    such as preparing and showing a Dialog or ProgressBar
+        */
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        /*
+         *    updating data
+         *    such a Dialog or ProgressBar
+        */
+
+        }
+    }
     private class Indentificateur2 extends AsyncTask<String, Void, Boolean> {
         private InputStream is = null;
         public String resultat=null;
@@ -242,6 +321,7 @@ public class Dispo extends AppCompatActivity {
             intent.putExtra("username", intent2.getStringExtra("username"));
             intent.putExtra("nom", intent2.getStringExtra("nom"));
             intent.putExtra("prenom", intent2.getStringExtra("prenom"));
+            intent.putExtra("antenne", intent2.getStringExtra("antenne"));
             intent.putExtra("theme","gestion");
             finish();
             startActivity(intent);

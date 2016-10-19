@@ -93,7 +93,7 @@ public class ImageList extends AppCompatActivity {
         ch_list = new ArrayList<Child>();
         // ajout des info pour la partie com
         Group gru = new Group();
-        gru.setName("Commucnication");
+        gru.setName("Communication");
         Child ch = new Child();ch.setName("Affiche café des sciences petits deb");ch.setImage(R.drawable.affiche_cafe_des_sciences_petits_debrouillards);ch_list.add(ch);
         Child ch2 = new Child();ch2.setName("l'air");ch2.setImage(R.drawable.air);ch_list.add(ch2);
         Child ch3 = new Child();ch3.setName("l'eau");ch3.setImage(R.drawable.eau);ch_list.add(ch3);

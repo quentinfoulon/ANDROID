@@ -56,8 +56,8 @@
                 android:lines="19"
                 android:nestedScrollingEnabled="true"
                 android:background="@android:color/white"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp" />
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"

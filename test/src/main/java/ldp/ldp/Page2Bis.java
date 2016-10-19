@@ -128,7 +128,7 @@ public class Page2Bis extends AppCompatActivity {
             Intent intent2 = getIntent();
 
             //setContentView(page2);
-            Intent intent = new Intent(Page2Bis.this, Formation.class);
+            Intent intent = new Intent(Page2Bis.this, Credit.class);
             boolean ok=Boolean.TRUE;
             if (isOnline()) {
 
