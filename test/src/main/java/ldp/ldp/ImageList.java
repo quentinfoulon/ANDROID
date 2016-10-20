@@ -164,9 +164,6 @@ public class ImageList extends AppCompatActivity {
         Child ch30 = new Child();ch30.setName("Stand Difficile de faire le mur");ch30.setImage(R.drawable.solidarite5);ch_list5.add(ch30);
         Child ch31 = new Child();ch31.setName("Stand Ou vive les migrants");ch31.setImage(R.drawable.solidarite6);ch_list5.add(ch31);
 
-        gru5.setItems(ch_list5);
-        list.add(gru5);
-        // fin partie santé
 
 
        /* int size = 4;

@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Réalisé par l&apos;equipe des Hauts De France:"
+            android:text="Réalisée par l&apos;equipe des Hauts De France:"
             android:id="@+id/textView8"
             android:textStyle="normal"
             android:textAlignment="center"
