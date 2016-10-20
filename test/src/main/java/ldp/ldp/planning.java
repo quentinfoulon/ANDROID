@@ -112,11 +112,13 @@ public class Planning extends AppCompatActivity {
             public void onDayClick(Date dateClicked) {
                 List<Event> events = compactCalendarView.getEvents(dateClicked);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
                 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+                sdf2.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
                 String selectedDate = sdf.format(dateClicked);
                 dateSelec=selectedDate;
-                compactCalendarView.getEvents(dateClicked).size();
-                System.out.println(compactCalendarView.getEvents(dateClicked).size());
+                //compactCalendarView.getEvents(dateClicked).size();
+                System.out.println(dateSelec);
                 if(compactCalendarView.getEvents(dateClicked).size()>0){
                     Intent intent = new Intent(Planning.this, Planning2.class);
                     intent.putExtra("date", sdf2.format(dateClicked));

@@ -75,7 +75,7 @@ public class Planning2 extends AppCompatActivity {
             }
         });
 
-        //ajoutTextView("test");
+        System.out.println(intent.getStringExtra("date"));
 
         // Faire quelque chose si le périphérique est connecté
         db = new Indentificateur2(); db.execute(intent.getStringExtra("date"),intent.getStringExtra("antenne"));
@@ -160,13 +160,14 @@ public class Planning2 extends AppCompatActivity {
                     //list.add(json_data.getString("titre"));
                     final Map<String, String> listItemMap = new HashMap<String, String>();
                     listItemMap.put("text1",json_data.getString("titre") );
+                    System.out.println(json_data.getString("date"));
                     String type=null;
                     if(json_data.getString("type").equals("R")){
-                        type="recurrent";
+                        type="Regulier";
                     }else if(json_data.getString("type").equals("P")){
                         type="Ponctuelle";
                     }else if(json_data.getString("type").equals("E")){
-                        type="evenementiel";
+                        type="Evenementiel";
                     }
                     if(json_data.getString("commentaire").equals("null")||json_data.getString("commentaire").equals(null))
                         listItemMap.put("text2","le "+json_data.getString("date")+" de "+json_data.getString("horaire")+" à "+json_data.getString("ville")+"\nAntenne de "+json_data.getString("antenne")+"\nActivité de type : "+type );

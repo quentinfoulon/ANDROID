@@ -99,6 +99,7 @@ public class Bilan2 extends AppCompatActivity {
             }
             else
             {
+
                 // Faire quelque chose s'il n'est pas connecté
             }
 
