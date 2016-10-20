@@ -106,6 +106,7 @@ public class Dispo extends AppCompatActivity {
         String format = "dd-MM-yyyy ";
         java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
         java.util.Date date = new java.util.Date();
+        formater.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
         dateSelec=formater.format( date ) ;
         // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
         // events has size 2 with the 2 events inserted previously
@@ -121,7 +122,9 @@ public class Dispo extends AppCompatActivity {
             public void onDayClick(Date dateClicked) {
                 List<Event> events = compactCalendarView.getEvents(dateClicked);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
                 String selectedDate = sdf.format(dateClicked);
+
                 dateSelec=selectedDate;;
             }
 

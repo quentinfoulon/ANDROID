@@ -58,6 +58,7 @@ public class Bilan1 extends AppCompatActivity {
         date.setDrawingCacheBackgroundColor(Color.RED);
 
 
+
     }
     private View.OnClickListener suivantListener = new View.OnClickListener() {
         @Override
